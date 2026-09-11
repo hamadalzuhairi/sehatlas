@@ -1,0 +1,15 @@
+[
+  { "region_id": "SA-01", "name_en": "Riyadh Region", "name_ar": "منطقة الرياض", "access_30": 88, "access_60": 95, "socio_index": 20, "env_index": 25, "disease_index": 30, "coverage_ratio": 0.93 },
+  { "region_id": "SA-02", "name_en": "Makkah Region", "name_ar": "منطقة مكة المكرمة", "access_30": 82, "access_60": 91, "socio_index": 28, "env_index": 35, "disease_index": 35, "coverage_ratio": 0.89 },
+  { "region_id": "SA-04", "name_en": "Eastern Province", "name_ar": "المنطقة الشرقية", "access_30": 85, "access_60": 93, "socio_index": 22, "env_index": 40, "disease_index": 38, "coverage_ratio": 0.91 },
+  { "region_id": "SA-03", "name_en": "Al Madinah Region", "name_ar": "منطقة المدينة المنورة", "access_30": 70, "access_60": 83, "socio_index": 35, "env_index": 30, "disease_index": 40, "coverage_ratio": 0.85 },
+  { "region_id": "SA-05", "name_en": "Al-Qassim Region", "name_ar": "منطقة القصيم", "access_30": 60, "access_60": 75, "socio_index": 40, "env_index": 32, "disease_index": 45, "coverage_ratio": 0.78 },
+  { "region_id": "SA-06", "name_en": "Ha'il Region", "name_ar": "منطقة حائل", "access_30": 50, "access_60": 68, "socio_index": 48, "env_index": 38, "disease_index": 50, "coverage_ratio": 0.72 },
+  { "region_id": "SA-07", "name_en": "Tabuk Region", "name_ar": "منطقة تبوك", "access_30": 48, "access_60": 65, "socio_index": 50, "env_index": 42, "disease_index": 48, "coverage_ratio": 0.70 },
+  { "region_id": "SA-14", "name_en": "'Asir Region", "name_ar": "منطقة عسير", "access_30": 55, "access_60": 70, "socio_index": 52, "env_index": 45, "disease_index": 55, "coverage_ratio": 0.74 },
+  { "region_id": "SA-08", "name_en": "Northern Borders Region", "name_ar": "منطقة الحدود الشمالية", "access_30": 32, "access_60": 48, "socio_index": 62, "env_index": 50, "disease_index": 58, "coverage_ratio": 0.55 },
+  { "region_id": "SA-09", "name_en": "Jazan Region", "name_ar": "منطقة جازان", "access_30": 38, "access_60": 52, "socio_index": 68, "env_index": 60, "disease_index": 65, "coverage_ratio": 0.60 },
+  { "region_id": "SA-10", "name_en": "Najran Region", "name_ar": "منطقة نجران", "access_30": 30, "access_60": 45, "socio_index": 65, "env_index": 55, "disease_index": 60, "coverage_ratio": 0.52 },
+  { "region_id": "SA-11", "name_en": "Al Bahah Region", "name_ar": "منطقة الباحة", "access_30": 35, "access_60": 50, "socio_index": 60, "env_index": 48, "disease_index": 57, "coverage_ratio": 0.58 },
+  { "region_id": "SA-12", "name_en": "Al Jawf Region", "name_ar": "منطقة الجوف", "access_30": 42, "access_60": 58, "socio_index": 55, "env_index": 44, "disease_index": 50, "coverage_ratio": 0.65 }
+]

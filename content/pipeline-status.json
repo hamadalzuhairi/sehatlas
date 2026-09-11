@@ -1,0 +1,11 @@
+{
+  "ingestion": "in-development",
+  "facilityValidation": "in-development",
+  "accessEngine": "in-development",
+  "vulnerabilityEngine": "in-development",
+  "environmentalLayer": "in-development",
+  "diseaseLayer": "in-development",
+  "quadrantClassifier": "in-development",
+  "validation": "in-development",
+  "visualisation": "live"
+}

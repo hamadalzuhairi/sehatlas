@@ -1,0 +1,514 @@
+{
+  "meta": {
+    "siteName": "Sehatlas",
+    "defaultTitle": "Sehatlas — Healthcare access and vulnerability mapping for Saudi Arabia",
+    "defaultDescription": "An open-data geospatial platform mapping healthcare access against population vulnerability across Saudi Arabia's regions, built by a student researcher."
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "platform": "Platform",
+    "mvp": "MVP demo",
+    "roadmap": "Roadmap",
+    "research": "Research",
+    "contact": "Contact",
+    "getInTouch": "Get in touch",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "languageToggle": "العربية"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark"
+  },
+  "common": {
+    "status": {
+      "live": "Live",
+      "in-development": "In development",
+      "planned": "Planned",
+      "permission-dependent": "Permission-dependent"
+    },
+    "readMore": "Read more",
+    "learnMore": "Learn more",
+    "backToTop": "Back to top",
+    "phase": "Phase {number}"
+  },
+  "footer": {
+    "tagline": "An open, auditable analytical layer for healthcare planning in Saudi Arabia.",
+    "overview": {
+      "title": "Overview",
+      "about": "About",
+      "platform": "Platform",
+      "mvp": "MVP demo",
+      "roadmap": "Roadmap",
+      "research": "Research"
+    },
+    "reach": {
+      "title": "Reach us",
+      "general": "General enquiry",
+      "research": "Research collaboration",
+      "partnership": "Institutional partnership",
+      "press": "Press"
+    },
+    "legal": {
+      "title": "Privacy & terms",
+      "privacy": "Privacy policy"
+    },
+    "newsletter": {
+      "title": "Stay in touch",
+      "description": "Get an update when the Phase 1 results are published.",
+      "placeholder": "Email address",
+      "cta": "Subscribe"
+    },
+    "studentProject": "An independent research project by a student at KSAU-HS. Not an official product of KSAU-HS, MNGHA, or the Ministry of Health.",
+    "rights": "All rights reserved."
+  },
+  "home": {
+    "hero": {
+      "headline": "Where care is far, and who can least afford the distance.",
+      "subhead": "Sehatlas maps two things for every region of Saudi Arabia — how easily people can reach healthcare, and how vulnerable they are if they can't — and shows exactly where those two problems overlap.",
+      "ctaPrimary": "See the MVP",
+      "ctaSecondary": "How it works"
+    },
+    "dataStrip": {
+      "eyebrow": "Built on open data",
+      "caption": "All Phase 1 inputs are publicly available. No permissions required."
+    },
+    "values": {
+      "heading": "What sets this apart",
+      "subheading": "Four decisions that shape how the platform is built.",
+      "cards": [
+        {
+          "title": "Access, not counts",
+          "body": "A facility count per region says nothing about how far anyone actually travels. The access score is a two-step floating catchment area (2SFCA) measure — how many facilities a population can reach within 30 or 60 minutes, discounted by how many other people compete for the same facilities."
+        },
+        {
+          "title": "A vulnerability index that doesn't exist yet",
+          "body": "No published small-area socioeconomic vulnerability index exists for Saudi Arabia. This one combines census socioeconomic data, satellite environmental exposure, and chronic disease burden into a single, standardised measure."
+        },
+        {
+          "title": "Two axes, not one score",
+          "body": "Access and vulnerability are kept deliberately separate. Merging them into one number would hide which problem a planner is looking at — distance, need, or both — and those require different interventions."
+        },
+        {
+          "title": "Open and reproducible by design",
+          "body": "Every input is freely available data. Every method is published. Anyone — a ministry planner, an academic reviewer, another researcher — can check the work or reproduce it end to end."
+        }
+      ]
+    },
+    "byNumbers": {
+      "heading": "By the numbers",
+      "subheading": "What Phase 1 is built to work across, per the MOH Statistical Yearbook 2024 and the 2022 GASTAT census.",
+      "regions": "administrative regions",
+      "hospitals": "hospitals",
+      "phc": "primary healthcare centres",
+      "population": "million people",
+      "axes": "independent axes",
+      "quadrants": "priority quadrants"
+    },
+    "tiers": {
+      "heading": "The platform",
+      "subheading": "Two tiers, deliberately kept separate — different audiences, different risk profiles.",
+      "cards": [
+        {
+          "title": "Planning tier",
+          "phase": "Phase 1",
+          "status": "in-development",
+          "body": "Planner- and researcher-facing. Built entirely on static, open data. Complete in itself: facility validation, both axes, the quadrant classification, and internal validation."
+        },
+        {
+          "title": "Siting optimiser",
+          "phase": "Phase 2",
+          "status": "planned",
+          "body": "Location-allocation modelling recommending where new clinics would relieve the most unmet need, using institutional data under a KAIMRC IRB."
+        },
+        {
+          "title": "Patient tier",
+          "phase": "Phase 3",
+          "status": "permission-dependent",
+          "body": "A patient-facing map of nearby emergency departments and current occupancy. Requires live hospital feeds, SFDA clearance, and emergency physician oversight — none of which exist yet."
+        }
+      ],
+      "cta": "See the full platform"
+    },
+    "journey": {
+      "heading": "From data to decision",
+      "subheading": "The workflow a planner follows once both axes are computed.",
+      "steps": [
+        {
+          "title": "Measure",
+          "body": "Compute the access score and the vulnerability index independently for every region, validated against official facility statistics."
+        },
+        {
+          "title": "Classify",
+          "body": "Plot both scores against each other. The quadrant a region falls into — not either score alone — tells a planner what kind of problem they're looking at."
+        },
+        {
+          "title": "Act",
+          "body": "Prioritise the high-vulnerability, low-access quadrant first. In later phases, a siting optimiser recommends where a new facility would help most."
+        }
+      ]
+    },
+    "status": {
+      "heading": "Where we are",
+      "subheading": "This is a pre-launch student project. Here is exactly what exists today.",
+      "built": {
+        "label": "Built",
+        "items": [
+          "Methodology for both axes and the quadrant classification.",
+          "The facility-validation approach comparing OpenStreetMap coverage against MOH statistics.",
+          "This demonstration interface, running entirely on labelled, synthetic data."
+        ]
+      },
+      "running": {
+        "label": "Running",
+        "items": [
+          "Assembly of the open data inputs — WorldPop, OpenStreetMap, GASTAT, MOH — for the first end-to-end Phase 1 pipeline run."
+        ]
+      },
+      "pending": {
+        "label": "Pending",
+        "items": [
+          "The first full Phase 1 pipeline run on real data.",
+          "IRB exemption confirmation for secondary analysis of public data.",
+          "A first manuscript draft for external review."
+        ]
+      }
+    },
+    "positioning": {
+      "body": "This platform is complementary to national health infrastructure such as the Sehhaty and NPHIES ecosystem. It does not replicate national data platforms; it provides an open, auditable analytical layer built on public data."
+    },
+    "closingCta": {
+      "heading": "Working on health access in Saudi Arabia? Let's talk.",
+      "cta": "Get in touch"
+    }
+  },
+  "about": {
+    "hero": {
+      "eyebrow": "About",
+      "title": "A planning tool for a question no one was answering.",
+      "subtitle": "Sehatlas is developed independently by a student researcher, applying open geospatial data to a gap in how Saudi Arabia measures healthcare access."
+    },
+    "mission": {
+      "heading": "Mission",
+      "body": "To give health planners, researchers, and policymakers in Saudi Arabia a free, open, and reproducible way to see where healthcare access and population vulnerability overlap — so that scarce siting and outreach resources go to the communities that need them most, not just the ones a raw facility count makes visible."
+    },
+    "problem": {
+      "heading": "The problem",
+      "paragraphs": [
+        "Saudi Arabia publishes how many hospitals and health centres exist in each of its 13 administrative regions — 516 hospitals and 5,779 primary healthcare centres per the MOH Statistical Yearbook 2024, against a 2022 census population of 32,175,224. But a facility count divided by an administrative boundary answers none of the questions a planner faces.",
+        "It does not say how far anyone actually travels to reach care, whether the nearest facility is already saturated by everyone else competing for it, or whether the populations facing the longest journeys are the ones least able to make them. A wealthy household drives ninety minutes to a hospital without difficulty; a poor household experiences the same ninety minutes as a barrier that delays treatment until it becomes an emergency.",
+        "On every existing measure, those two places look identical. No published tool currently distinguishes them anywhere in the Kingdom, and no small-area socioeconomic vulnerability index exists for Saudi Arabia at all."
+      ]
+    },
+    "founder": {
+      "heading": "Founder",
+      "name": "Hamad",
+      "role": "Sixth-year medical student, King Saud bin Abdulaziz University for Health Sciences (KSAU-HS), Riyadh",
+      "bioPlaceholder": "[Founder bio — to be supplied. Two to four sentences on background, research interests, and why this platform.]"
+    },
+    "institutional": {
+      "heading": "Institutional context",
+      "body": "Sehatlas is developed independently by a student researcher at King Saud bin Abdulaziz University for Health Sciences (KSAU-HS), with research access through the Ministry of National Guard Health Affairs (MNGHA) for later phases. KSAU-HS and MNGHA are named here as affiliations and, in later phases, potential data-access routes — not as endorsers, funders, owners, or partners of this platform."
+    }
+  },
+  "platform": {
+    "hero": {
+      "eyebrow": "Platform",
+      "title": "Two independent measures. One priority map.",
+      "subtitle": "How the access score and the vulnerability index are built, why they're kept apart, and what still needs work."
+    },
+    "axes": {
+      "heading": "The two axes",
+      "access": {
+        "title": "Axis 1 — Spatial access to healthcare",
+        "body": "A two-step floating catchment area (2SFCA) score: not facility counts, but how many facilities a population can reach within 30 or 60 minutes of travel, discounted by how many other people compete for the same facilities.",
+        "inputsLabel": "Inputs",
+        "inputs": [
+          "WorldPop 100m gridded population",
+          "OpenStreetMap facility locations and road network",
+          "MOH facility statistics, used for validation"
+        ]
+      },
+      "vulnerability": {
+        "title": "Axis 2 — Vulnerability",
+        "body": "A constructed index combining three components, standardised and combined by principal component analysis (PCA) with published loadings. The reasoning: these compound one another. A community that is poor, heat-exposed, and already managing chronic illness carries far more health need than one that is merely distant, because chronic conditions demand sustained nearby care and distance turns that management into emergency presentation.",
+        "componentsLabel": "Components",
+        "components": [
+          { "title": "Socioeconomic", "body": "Census data on education, housing, and income." },
+          { "title": "Environmental exposure", "body": "Satellite data on PM2.5 air pollution, heat, and greenery (NDVI, Normalized Difference Vegetation Index)." },
+          { "title": "Chronic disease burden", "body": "Principally diabetes and hypertension, from national health surveys." }
+        ]
+      }
+    },
+    "quadrant": {
+      "heading": "The quadrant",
+      "body": "Every unit is plotted on both axes, splitting the map into four groups. The two numbers are deliberately kept separate rather than merged into one score, because the quadrant tells a planner not just where the problem is but which problem they are looking at — and those need different interventions.",
+      "cells": {
+        "priority": { "title": "Priority", "subtitle": "High vulnerability, low access", "body": "Far from care and least equipped to cope with being far. The target group for siting and outreach." },
+        "served": { "title": "Served but vulnerable", "subtitle": "High vulnerability, good access", "body": "Access isn't the barrier here — the underlying vulnerability is. Needs outreach and chronic-care support, not new facilities." },
+        "remote": { "title": "Remote but resourced", "subtitle": "Low vulnerability, low access", "body": "Distant, but the population can generally absorb it. Lower priority than the priority quadrant." },
+        "none": { "title": "No identified gap", "subtitle": "Low vulnerability, good access", "body": "Neither access nor vulnerability stands out. Not a priority for new intervention." }
+      }
+    },
+    "whyTwoAxes": {
+      "heading": "Why two axes, not one score",
+      "body": "A single blended score would be easier to rank — and would hide the thing a planner most needs to know. Two regions can produce the same combined score for entirely different reasons: one because it's remote but resilient, the other because it's nearby but overwhelmed by need. Collapsing that distinction into one number erases the difference between 'build a clinic here' and 'fund outreach and chronic-disease management here.' Keeping the axes separate keeps that distinction visible."
+    },
+    "validation": {
+      "heading": "Validation approach",
+      "body": "Because chronic disease sits inside the vulnerability score, it cannot also be used to test that score. Validation instead relies on three approaches, in order of what's currently feasible:",
+      "items": [
+        { "title": "Facility validation", "body": "The OpenStreetMap facility layer is checked against official MOH figures, region by region, producing a coverage ratio that shows where the map is reliable." },
+        { "title": "Leave-one-component-out sensitivity analysis", "body": "The vulnerability index is recomputed with each component removed in turn, to see how much any single input drives the result." },
+        { "title": "Expert face-validity review", "body": "Regional public health practitioners review whether the classification matches what they observe on the ground." },
+        { "title": "Clinical outcome validation (later phase)", "body": "Testing the index against measured outcomes such as emergency department utilisation and avoidable admissions, once institutional data access is in place." }
+      ]
+    },
+    "tiers": {
+      "heading": "The two tiers",
+      "tier1": {
+        "title": "Tier 1 — Planning tier",
+        "status": "in-development",
+        "body": "Planner- and researcher-facing. Built entirely on static, open data. Buildable now, and complete in itself. This is Phase 1."
+      },
+      "tier2": {
+        "title": "Tier 2 — Patient tier",
+        "status": "permission-dependent",
+        "body": "Patient-facing: a map showing nearby emergency departments and how busy each currently is, plus a short triage questionnaire feeding an estimated wait time — so a patient isn't forced to default to the closest ED when a quieter one is reachable.",
+        "safetyHeading": "Fixed safety constraints",
+        "safety": [
+          "Anyone reporting chest pain, stroke symptoms, or other red-flag presentations is instructed to call 997 and attend the nearest facility, with all routing suppressed.",
+          "Wait times, when shown, are always ranges — never precise figures.",
+          "This tier requires live occupancy feeds from hospitals, SFDA clearance as clinical decision support, and emergency physician oversight — none of which currently exist. The realistic entry point is a single-cluster pilot, not a national launch.",
+          "This tier is not available. Nothing on this site should be used to decide where to seek care."
+        ]
+      }
+    },
+    "dataSources": {
+      "heading": "Data sources",
+      "columns": { "source": "Source", "provides": "What it provides", "resolution": "Resolution", "licence": "Licence" },
+      "rows": [
+        { "source": "WorldPop", "provides": "Gridded population counts", "resolution": "100m", "licence": "CC BY 4.0" },
+        { "source": "OpenStreetMap", "provides": "Facility locations, road network", "resolution": "Point / vector", "licence": "ODbL" },
+        { "source": "GHSL (Global Human Settlement Layer)", "provides": "Built-up area and settlement classification", "resolution": "100m", "licence": "CC BY 4.0" },
+        { "source": "VIIRS (Visible Infrared Imaging Radiometer Suite)", "provides": "Night-time lights, as an economic activity proxy", "resolution": "~500m", "licence": "Public domain (NOAA)" },
+        { "source": "ACAG PM2.5 (Atmospheric Composition Analysis Group)", "provides": "Fine particulate air pollution", "resolution": "~1km", "licence": "Open, attribution required" },
+        { "source": "ERA5", "provides": "Reanalysis climate data, including heat exposure", "resolution": "~9km, hourly", "licence": "Copernicus open licence" },
+        { "source": "MODIS NDVI (Normalized Difference Vegetation Index)", "provides": "Greenery / vegetation cover", "resolution": "250m", "licence": "Public domain (NASA)" },
+        { "source": "GASTAT", "provides": "2022 census population and socioeconomic indicators", "resolution": "Region / governorate", "licence": "Open government data" },
+        { "source": "MOH Statistical Yearbook", "provides": "Facility counts, used for validation", "resolution": "Region", "licence": "Open government data" },
+        { "source": "HDX (Humanitarian Data Exchange)", "provides": "Administrative boundary polygons", "resolution": "ADM1 (region)", "licence": "Varies by dataset, open" }
+      ]
+    },
+    "limitations": {
+      "heading": "Limitations",
+      "items": [
+        "OpenStreetMap facility coverage is uneven and weakest in rural areas; the validation module quantifies this rather than hiding it.",
+        "Chronic disease data exists only at 13-region resolution with wide confidence intervals; governorate-level small-area estimation is the priority methodological upgrade.",
+        "Thirteen regions is too few units for stable spatial modelling; governorate-level analysis (roughly 139 units) is strongly preferred, contingent on obtaining boundary polygons.",
+        "Phase 1 has no external validation against clinical outcomes; this is stated, not hidden, and is planned for a later phase.",
+        "Income is not a census variable in Saudi Arabia and may need to be proxied by other socioeconomic indicators."
+      ]
+    }
+  },
+  "roadmap": {
+    "hero": {
+      "eyebrow": "Roadmap",
+      "title": "Three phases, in order of what's possible now.",
+      "subtitle": "Phase 2 and Phase 3 items are contingent on IRB approval, institutional partnership, and regulatory assessment — they are not commitments to a timeline."
+    },
+    "currentSprintHeading": "Current sprint",
+    "phases": [
+      {
+        "id": "phase-1",
+        "title": "Phase 1 — Planning tier",
+        "status": "in-development",
+        "summary": "Open data only. Facility validation, both axes, quadrant classification, internal validation, manuscript.",
+        "deliverables": [
+          "Facility validation module (OSM vs. MOH)",
+          "Access engine (2SFCA, 30 and 60-minute catchments)",
+          "Vulnerability engine (socioeconomic, environmental, disease)",
+          "Quadrant classifier",
+          "Internal validation (sensitivity analysis, expert review)",
+          "Manuscript for peer review"
+        ],
+        "dependencies": ["IRB exemption for secondary analysis of public data"]
+      },
+      {
+        "id": "phase-2",
+        "title": "Phase 2 — Siting optimiser",
+        "status": "planned",
+        "summary": "Institutional data via KAIMRC IRB; location-allocation modelling; external clinical outcome validation.",
+        "deliverables": [
+          "Location-allocation siting optimiser",
+          "Integration of institutional data (MNGHA BESTCare records, Saudi Biobank)",
+          "External validation against clinical outcomes"
+        ],
+        "dependencies": ["KAIMRC IRB approval", "Institutional data-sharing agreement"]
+      },
+      {
+        "id": "phase-3",
+        "title": "Phase 3 — Patient tier",
+        "status": "permission-dependent",
+        "summary": "National data linkage through institutional partnership; patient-facing emergency department routing, with fixed safety constraints.",
+        "deliverables": [
+          "Live ED occupancy feed integration",
+          "Triage questionnaire and estimated wait-time model",
+          "Single-cluster pilot deployment"
+        ],
+        "dependencies": ["National data linkage (NPHIES, Sehhaty, Weqaya)", "SFDA regulatory clearance as clinical decision support", "Emergency physician oversight"]
+      }
+    ]
+  },
+  "research": {
+    "hero": {
+      "eyebrow": "Research",
+      "title": "Methodology notes",
+      "subtitle": "Written for an academic reader. Full detail will accompany the Phase 1 manuscript."
+    },
+    "sections": [
+      {
+        "title": "2SFCA (two-step floating catchment area)",
+        "body": "The access score is computed in two steps. First, for each facility, a facility-to-population ratio is calculated using all population within the facility's catchment (a 30 or 60-minute travel-time threshold). Second, for each population point, the access score sums the facility-to-population ratios of every facility within reach of that point. This produces a per-capita measure of available capacity, not a raw distance or a facility count."
+      },
+      {
+        "title": "PCA-based index construction",
+        "body": "The vulnerability index standardises each input component (socioeconomic, environmental, disease burden) to a common scale, then combines them using principal component analysis (PCA). The first principal component's loadings — published alongside the index — determine each component's contribution to the final score."
+      },
+      {
+        "title": "Tercile cut-points",
+        "body": "Regions are classified into 'high' and 'low' groups on each axis using tercile cuts by default, with a median-cut toggle available for comparison. Cut-point choice affects which regions fall into the priority quadrant, particularly near the boundary — this is disclosed, not smoothed over."
+      },
+      {
+        "title": "Multi-scale sensitivity",
+        "body": "Where boundary data permits, results are checked across administrative scales (region versus governorate) to see whether the classification is an artefact of the chosen unit size."
+      },
+      {
+        "title": "MAUP and the ecological fallacy",
+        "body": "The modifiable areal unit problem (MAUP) means that results can shift depending on how boundaries are drawn — a caveat that applies to any areal analysis, including this one. Region-level classification also carries an ecological fallacy risk: a conclusion true of a region as a whole is not necessarily true of every community, or every person, within it. Both are stated explicitly rather than implied away by a confident-looking map."
+      }
+    ],
+    "publications": {
+      "heading": "Publications",
+      "placeholder": "Manuscript in preparation."
+    }
+  },
+  "mvp": {
+    "banner": "Demonstration using illustrative data. Values shown do not represent real measurements. Phase 1 pipeline in development.",
+    "hero": {
+      "eyebrow": "MVP demo",
+      "title": "Explore the quadrant, region by region.",
+      "subtitle": "Every number on this page is synthetic. The interface is real — it will run on Phase 1 pipeline output without any code changes."
+    },
+    "map": {
+      "heading": "Map",
+      "modeLabel": "Choropleth mode",
+      "modes": { "access": "Access score", "vulnerability": "Vulnerability score", "quadrant": "Quadrant class" },
+      "catchmentLabel": "Catchment",
+      "catchment30": "30 minutes",
+      "catchment60": "60 minutes",
+      "componentsLabel": "Vulnerability components",
+      "components": { "socio": "Socioeconomic", "env": "Environmental", "disease": "Chronic disease" },
+      "componentsHint": "Uncheck a component to see the vulnerability score and map recompute live, without it — a running leave-one-component-out sensitivity check.",
+      "hoverHint": "Hover a region for scores. Click to select it."
+    },
+    "scatter": {
+      "heading": "Access vs. vulnerability",
+      "cutLabel": "Classification cut",
+      "cutTercile": "Tercile",
+      "cutMedian": "Median",
+      "xAxis": "Access score",
+      "yAxis": "Vulnerability score",
+      "quadrantLabels": {
+        "priority": "Priority: low access, high vulnerability",
+        "served": "Served but vulnerable",
+        "remote": "Remote but resourced",
+        "none": "No identified gap"
+      }
+    },
+    "details": {
+      "heading": "Region detail",
+      "empty": "Select a region on the map or the chart to see its detail here.",
+      "quadrantLabel": "Quadrant",
+      "accessLabel": "Access score",
+      "vulnerabilityLabel": "Vulnerability score",
+      "componentsHeading": "Vulnerability component contribution",
+      "coverageLabel": "Facility coverage ratio",
+      "coverageHint": "Share of MOH-reported facilities matched in the OpenStreetMap layer for this region.",
+      "plannerHeading": "What this means for a planner",
+      "plannerTemplates": {
+        "priority": "{region} combines high vulnerability with low access. This is the priority group: prioritise it for new facility siting and targeted outreach.",
+        "served": "{region} has good access, but high vulnerability. The barrier here isn't distance — invest in outreach and chronic-disease management rather than new facilities.",
+        "remote": "{region} is low-access but low-vulnerability. The population can generally absorb the distance; this is a lower priority than the priority quadrant.",
+        "none": "{region} shows no identified gap on either axis. Not a priority for new intervention under this framework."
+      }
+    },
+    "table": {
+      "heading": "Ranked priority table",
+      "columns": {
+        "rank": "Rank",
+        "region": "Region",
+        "access30": "Access (30m)",
+        "access60": "Access (60m)",
+        "vulnerability": "Vulnerability",
+        "quadrant": "Quadrant",
+        "coverage": "Facility coverage"
+      },
+      "exportCsv": "Export CSV"
+    },
+    "pipeline": {
+      "heading": "Phase 1 pipeline status",
+      "toggle": "Show pipeline status",
+      "modules": {
+        "ingestion": "Data ingestion",
+        "facilityValidation": "Facility validation",
+        "accessEngine": "Access engine",
+        "vulnerabilityEngine": "Vulnerability engine",
+        "environmentalLayer": "Environmental layer",
+        "diseaseLayer": "Disease layer",
+        "quadrantClassifier": "Quadrant classifier",
+        "validation": "Validation",
+        "visualisation": "Visualisation"
+      }
+    }
+  },
+  "contact": {
+    "hero": {
+      "eyebrow": "Contact",
+      "title": "Get in touch",
+      "subtitle": "For general enquiries, research collaboration, institutional partnership, or press."
+    },
+    "form": {
+      "name": "Name",
+      "organisation": "Organisation",
+      "email": "Email",
+      "enquiryType": "Enquiry type",
+      "enquiryOptions": {
+        "general": "General enquiry",
+        "research": "Research collaboration",
+        "partnership": "Institutional partnership",
+        "press": "Press"
+      },
+      "message": "Message",
+      "submit": "Send message",
+      "submitting": "Sending…",
+      "successTitle": "Message sent",
+      "successBody": "Thank you — this will be routed to the founder directly. Expect a reply within a few days.",
+      "errorBody": "Something went wrong sending this. Please try again, or email directly.",
+      "emailFallback": "You can also reach us directly at"
+    }
+  },
+  "privacy": {
+    "hero": {
+      "eyebrow": "Privacy",
+      "title": "Privacy policy"
+    },
+    "placeholder": {
+      "heading": "This policy is a placeholder",
+      "body": "Sehatlas is a pre-launch student project and does not yet process personal data beyond what is submitted through the contact form. A complete privacy policy — covering data collected, retention, and rights — will be published before any data collection beyond the contact form goes live.",
+      "contactFormHeading": "Contact form data",
+      "contactFormBody": "Information submitted through the contact form (name, organisation, email, message) is used only to respond to your enquiry and is not shared with third parties or used for any other purpose."
+    }
+  }
+}

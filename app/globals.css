@@ -1,0 +1,203 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------- */
+/* Theme tokens. Dark is the default register; [data-theme="light"] flips */
+/* it. Values are original — do not reuse Lean Business Services' palette. */
+/* ---------------------------------------------------------------------- */
+:root {
+  --bg: #f6f5f2;
+  --bg-raised: #ffffff;
+  --bg-sunken: #ece9e3;
+  --fg: #17181c;
+  --fg-muted: #52545c;
+  --border: #dcd9d1;
+  --accent: #0a6e5f;
+  --accent-fg: #ffffff;
+  --accent-soft: #d9efe9;
+
+  --quad-priority: #b0413e;
+  --quad-served: #b8863b;
+  --quad-remote: #3d6fb4;
+  --quad-none: #4c8c5b;
+
+  --focus-ring: #0a6e5f;
+  --scrollbar: #c8c4ba;
+
+  --banner-bg: #7a2420;
+  --banner-fg: #fff4f2;
+}
+
+:root[data-theme="dark"] {
+  --bg: #0d0f14;
+  --bg-raised: #161923;
+  --bg-sunken: #090a0d;
+  --fg: #edeef2;
+  --fg-muted: #a1a5b3;
+  --border: #262a38;
+  --accent: #35c4a8;
+  --accent-fg: #05201b;
+  --accent-soft: #12352f;
+
+  --quad-priority: #e2716c;
+  --quad-served: #e0b256;
+  --quad-remote: #6fa3e6;
+  --quad-none: #6fbf7c;
+
+  --focus-ring: #35c4a8;
+  --scrollbar: #2c3140;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0d0f14;
+    --bg-raised: #161923;
+    --bg-sunken: #090a0d;
+    --fg: #edeef2;
+    --fg-muted: #a1a5b3;
+    --border: #262a38;
+    --accent: #35c4a8;
+    --accent-fg: #05201b;
+    --accent-soft: #12352f;
+
+    --quad-priority: #e2716c;
+    --quad-served: #e0b256;
+    --quad-remote: #6fa3e6;
+    --quad-none: #6fbf7c;
+
+    --focus-ring: #35c4a8;
+    --scrollbar: #2c3140;
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-raised: var(--bg-raised);
+  --color-bg-sunken: var(--bg-sunken);
+  --color-fg: var(--fg);
+  --color-fg-muted: var(--fg-muted);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-fg: var(--accent-fg);
+  --color-accent-soft: var(--accent-soft);
+  --color-quad-priority: var(--quad-priority);
+  --color-quad-served: var(--quad-served);
+  --color-quad-remote: var(--quad-remote);
+  --color-quad-none: var(--quad-none);
+  --color-banner-bg: var(--banner-bg);
+  --color-banner-fg: var(--banner-fg);
+  --font-sans: var(--font-body);
+  --font-arabic: var(--font-body-ar);
+}
+
+html {
+  color-scheme: light dark;
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+}
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+* {
+  border-color: var(--border);
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+}
+
+::selection {
+  background: var(--accent-soft);
+  color: var(--fg);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar);
+  border-radius: 999px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+[dir="rtl"] .flip-rtl {
+  transform: scaleX(-1);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+[dir="rtl"] .animate-marquee {
+  animation-direction: reverse;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
+}
+
+.maplibregl-popup-content {
+  background: var(--bg-raised) !important;
+  color: var(--fg) !important;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+}
+.maplibregl-popup-tip {
+  border-top-color: var(--bg-raised) !important;
+}
+.maplibregl-ctrl-attrib {
+  background: color-mix(in srgb, var(--bg) 70%, transparent) !important;
+  color: var(--fg-muted) !important;
+}
+.maplibregl-ctrl-attrib a {
+  color: var(--fg-muted) !important;
+}

@@ -1,0 +1,83 @@
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { Reveal } from "@/components/reveal";
+import { StatusBadge, type FeatureStatus } from "@/components/status-badge";
+import currentSprint from "@/content/roadmap.json";
+
+type Phase = {
+  id: string;
+  title: string;
+  status: FeatureStatus;
+  summary: string;
+  deliverables: string[];
+  dependencies: string[];
+};
+
+export default async function RoadmapPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations("roadmap");
+  const tCommon = await getTranslations("common");
+  const phases = t.raw("phases") as Phase[];
+  const sprintNote =
+    currentSprint.currentSprint[locale as "en" | "ar"] ?? currentSprint.currentSprint.en;
+
+  return (
+    <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
+      <p className="text-xs font-semibold uppercase tracking-widest text-accent">{t("hero.eyebrow")}</p>
+      <h1 className="mt-2 text-3xl font-extrabold tracking-tight text-fg sm:text-4xl">{t("hero.title")}</h1>
+      <p className="mt-4 text-lg text-fg-muted">{t("hero.subtitle")}</p>
+
+      <Reveal className="mt-10 rounded-xl border border-accent/40 bg-accent-soft p-4">
+        <p className="text-xs font-semibold uppercase tracking-wide text-accent">
+          {t("currentSprintHeading")}
+        </p>
+        <p className="mt-1 text-sm text-fg">{sprintNote}</p>
+      </Reveal>
+
+      <div className="mt-12 space-y-10 border-s-2 border-border ps-6">
+        {phases.map((phase) => (
+          <Reveal key={phase.id} className="relative">
+            <span className="absolute -start-[1.95rem] top-1 h-3 w-3 rounded-full bg-accent" />
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <h2 className="text-xl font-bold text-fg">{phase.title}</h2>
+              <StatusBadge status={phase.status} label={tCommon(`status.${phase.status}`)} />
+            </div>
+            <p className="mt-2 text-fg-muted">{phase.summary}</p>
+
+            <p className="mt-4 text-xs font-semibold uppercase tracking-wide text-fg-muted">
+              Deliverables
+            </p>
+            <ul className="mt-1.5 space-y-1 text-sm text-fg-muted">
+              {phase.deliverables.map((d) => (
+                <li key={d} className="ps-3 relative">
+                  <span className="absolute start-0 top-2 h-1 w-1 rounded-full bg-fg-muted" />
+                  {d}
+                </li>
+              ))}
+            </ul>
+
+            {phase.dependencies.length > 0 && (
+              <>
+                <p className="mt-4 text-xs font-semibold uppercase tracking-wide text-quad-served">
+                  Dependencies
+                </p>
+                <ul className="mt-1.5 space-y-1 text-sm text-fg-muted">
+                  {phase.dependencies.map((d) => (
+                    <li key={d} className="ps-3 relative">
+                      <span className="absolute start-0 top-2 h-1 w-1 rounded-full bg-quad-served" />
+                      {d}
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
+          </Reveal>
+        ))}
+      </div>
+    </div>
+  );
+}
