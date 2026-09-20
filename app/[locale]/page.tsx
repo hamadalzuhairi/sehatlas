@@ -159,7 +159,10 @@ export default async function HomePage({
         </div>
         <div className="mt-8">
           <Link href="/platform" className="text-sm font-semibold text-accent hover:underline">
-            {t("tiers.cta")} →
+            {t("tiers.cta")}{" "}
+            <span aria-hidden className="flip-rtl inline-block">
+              →
+            </span>
           </Link>
         </div>
       </section>
