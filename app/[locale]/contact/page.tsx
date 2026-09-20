@@ -1,5 +1,28 @@
+import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ContactForm } from "@/components/contact-form";
+
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "contact" });
+  const title = t("hero.title");
+  const description = t("hero.subtitle");
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: `/${locale}/contact`,
+      languages: { en: "/en/contact", ar: "/ar/contact" },
+    },
+    openGraph: { title, description, url: `/${locale}/contact` },
+  };
+}
 
 export default async function ContactPage({
   params,

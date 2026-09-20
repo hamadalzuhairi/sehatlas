@@ -1,6 +1,29 @@
+import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { DemoBanner } from "@/components/mvp/demo-banner";
 import { MvpApp } from "@/components/mvp/mvp-app";
+
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "mvp" });
+  const title = t("hero.title");
+  const description = t("hero.subtitle");
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: `/${locale}/mvp`,
+      languages: { en: "/en/mvp", ar: "/ar/mvp" },
+    },
+    openGraph: { title, description, url: `/${locale}/mvp` },
+  };
+}
 
 export default async function MvpPage({
   params,

@@ -4,7 +4,7 @@ export function DataSourceStrip() {
   const items = [...DATA_SOURCES, ...DATA_SOURCES];
 
   return (
-    <div className="hide-scrollbar overflow-hidden border-y border-border bg-bg-sunken py-6">
+    <div className="hide-scrollbar marquee-mask overflow-hidden border-y border-border bg-bg-sunken py-6">
       <div className="flex w-max animate-marquee gap-12 ps-6">
         {items.map((name, i) => (
           <span

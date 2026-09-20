@@ -1,7 +1,7 @@
 {
   "meta": {
-    "siteName": "Sehatlas",
-    "defaultTitle": "Sehatlas — Healthcare access and vulnerability mapping for Saudi Arabia",
+    "siteName": "Sehhatlas",
+    "defaultTitle": "Sehhatlas — Healthcare access and vulnerability mapping for Saudi Arabia",
     "defaultDescription": "An open-data geospatial platform mapping healthcare access against population vulnerability across Saudi Arabia's regions, built by a student researcher."
   },
   "nav": {
@@ -31,7 +31,8 @@
     "readMore": "Read more",
     "learnMore": "Learn more",
     "backToTop": "Back to top",
-    "phase": "Phase {number}"
+    "phase": "Phase {number}",
+    "skipToContent": "Skip to content"
   },
   "footer": {
     "tagline": "An open, auditable analytical layer for healthcare planning in Saudi Arabia.",
@@ -58,15 +59,19 @@
       "title": "Stay in touch",
       "description": "Get an update when the Phase 1 results are published.",
       "placeholder": "Email address",
-      "cta": "Subscribe"
+      "cta": "Subscribe",
+      "success": "Thanks — we'll email you when the Phase 1 results are published.",
+      "error": "That didn't send. Please try again, or email us directly.",
+      "invalid": "Please enter a valid email address."
     },
     "studentProject": "An independent research project by a student at KSAU-HS. Not an official product of KSAU-HS, MNGHA, or the Ministry of Health.",
-    "rights": "All rights reserved."
+    "rights": "All rights reserved.",
+    "contactTitle": "Contact"
   },
   "home": {
     "hero": {
       "headline": "Where care is far, and who can least afford the distance.",
-      "subhead": "Sehatlas maps two things for every region of Saudi Arabia — how easily people can reach healthcare, and how vulnerable they are if they can't — and shows exactly where those two problems overlap.",
+      "subhead": "Sehhatlas maps two things for every region of Saudi Arabia — how easily people can reach healthcare, and how vulnerable they are if they can't — and shows exactly where those two problems overlap.",
       "ctaPrimary": "See the MVP",
       "ctaSecondary": "How it works"
     },
@@ -187,7 +192,7 @@
     "hero": {
       "eyebrow": "About",
       "title": "A planning tool for a question no one was answering.",
-      "subtitle": "Sehatlas is developed independently by a student researcher, applying open geospatial data to a gap in how Saudi Arabia measures healthcare access."
+      "subtitle": "Sehhatlas is developed independently by a student researcher, applying open geospatial data to a gap in how Saudi Arabia measures healthcare access."
     },
     "mission": {
       "heading": "Mission",
@@ -203,13 +208,35 @@
     },
     "founder": {
       "heading": "Founder",
-      "name": "Hamad",
+      "name": "Hamad Al-Zuhayri",
       "role": "Sixth-year medical student, King Saud bin Abdulaziz University for Health Sciences (KSAU-HS), Riyadh",
-      "bioPlaceholder": "[Founder bio — to be supplied. Two to four sentences on background, research interests, and why this platform.]"
+      "bio": "Hamad is a sixth-year medical student at King Saud bin Abdulaziz University for Health Sciences in Riyadh, with research access through the Ministry of National Guard Health Affairs. Sehhatlas began with a question raised during clinical training: the Kingdom publishes how many facilities each region has, but nothing about who can actually reach them. Phase 1 is deliberately built on open data, so that every step of the method can be checked and reproduced by anyone."
     },
     "institutional": {
       "heading": "Institutional context",
-      "body": "Sehatlas is developed independently by a student researcher at King Saud bin Abdulaziz University for Health Sciences (KSAU-HS), with research access through the Ministry of National Guard Health Affairs (MNGHA) for later phases. KSAU-HS and MNGHA are named here as affiliations and, in later phases, potential data-access routes — not as endorsers, funders, owners, or partners of this platform."
+      "body": "Sehhatlas is developed independently by a student researcher at King Saud bin Abdulaziz University for Health Sciences (KSAU-HS), with research access through the Ministry of National Guard Health Affairs (MNGHA) for later phases. KSAU-HS and MNGHA are named here as affiliations and, in later phases, potential data-access routes — not as endorsers, funders, owners, or partners of this platform."
+    },
+    "team": {
+      "heading": "The team",
+      "note": "Roles reflect the current pre-launch phase. Institutional affiliations are listed for context only — they do not imply endorsement.",
+      "members": [
+        {
+          "name": "Hamad Al-Zuhayri",
+          "role": "Founder & CEO"
+        },
+        {
+          "name": "Majd Al-Hazmi",
+          "role": "Founder & CMO"
+        },
+        {
+          "name": "Manar Al-Mansour",
+          "role": "Founder & CTO"
+        },
+        {
+          "name": "Dr. Hayyaf Aldossary",
+          "role": "Medical Advisor"
+        }
+      ]
     }
   },
   "platform": {
@@ -235,9 +262,18 @@
         "body": "A constructed index combining three components, standardised and combined by principal component analysis (PCA) with published loadings. The reasoning: these compound one another. A community that is poor, heat-exposed, and already managing chronic illness carries far more health need than one that is merely distant, because chronic conditions demand sustained nearby care and distance turns that management into emergency presentation.",
         "componentsLabel": "Components",
         "components": [
-          { "title": "Socioeconomic", "body": "Census data on education, housing, and income." },
-          { "title": "Environmental exposure", "body": "Satellite data on PM2.5 air pollution, heat, and greenery (NDVI, Normalized Difference Vegetation Index)." },
-          { "title": "Chronic disease burden", "body": "Principally diabetes and hypertension, from national health surveys." }
+          {
+            "title": "Socioeconomic",
+            "body": "Census data on education, housing, and income."
+          },
+          {
+            "title": "Environmental exposure",
+            "body": "Satellite data on PM2.5 air pollution, heat, and greenery (NDVI, Normalized Difference Vegetation Index)."
+          },
+          {
+            "title": "Chronic disease burden",
+            "body": "Principally diabetes and hypertension, from national health surveys."
+          }
         ]
       }
     },
@@ -245,10 +281,26 @@
       "heading": "The quadrant",
       "body": "Every unit is plotted on both axes, splitting the map into four groups. The two numbers are deliberately kept separate rather than merged into one score, because the quadrant tells a planner not just where the problem is but which problem they are looking at — and those need different interventions.",
       "cells": {
-        "priority": { "title": "Priority", "subtitle": "High vulnerability, low access", "body": "Far from care and least equipped to cope with being far. The target group for siting and outreach." },
-        "served": { "title": "Served but vulnerable", "subtitle": "High vulnerability, good access", "body": "Access isn't the barrier here — the underlying vulnerability is. Needs outreach and chronic-care support, not new facilities." },
-        "remote": { "title": "Remote but resourced", "subtitle": "Low vulnerability, low access", "body": "Distant, but the population can generally absorb it. Lower priority than the priority quadrant." },
-        "none": { "title": "No identified gap", "subtitle": "Low vulnerability, good access", "body": "Neither access nor vulnerability stands out. Not a priority for new intervention." }
+        "priority": {
+          "title": "Priority",
+          "subtitle": "High vulnerability, low access",
+          "body": "Far from care and least equipped to cope with being far. The target group for siting and outreach."
+        },
+        "served": {
+          "title": "Served but vulnerable",
+          "subtitle": "High vulnerability, good access",
+          "body": "Access isn't the barrier here — the underlying vulnerability is. Needs outreach and chronic-care support, not new facilities."
+        },
+        "remote": {
+          "title": "Remote but resourced",
+          "subtitle": "Low vulnerability, low access",
+          "body": "Distant, but the population can generally absorb it. Lower priority than the priority quadrant."
+        },
+        "none": {
+          "title": "No identified gap",
+          "subtitle": "Low vulnerability, good access",
+          "body": "Neither access nor vulnerability stands out. Not a priority for new intervention."
+        }
       }
     },
     "whyTwoAxes": {
@@ -259,10 +311,22 @@
       "heading": "Validation approach",
       "body": "Because chronic disease sits inside the vulnerability score, it cannot also be used to test that score. Validation instead relies on three approaches, in order of what's currently feasible:",
       "items": [
-        { "title": "Facility validation", "body": "The OpenStreetMap facility layer is checked against official MOH figures, region by region, producing a coverage ratio that shows where the map is reliable." },
-        { "title": "Leave-one-component-out sensitivity analysis", "body": "The vulnerability index is recomputed with each component removed in turn, to see how much any single input drives the result." },
-        { "title": "Expert face-validity review", "body": "Regional public health practitioners review whether the classification matches what they observe on the ground." },
-        { "title": "Clinical outcome validation (later phase)", "body": "Testing the index against measured outcomes such as emergency department utilisation and avoidable admissions, once institutional data access is in place." }
+        {
+          "title": "Facility validation",
+          "body": "The OpenStreetMap facility layer is checked against official MOH figures, region by region, producing a coverage ratio that shows where the map is reliable."
+        },
+        {
+          "title": "Leave-one-component-out sensitivity analysis",
+          "body": "The vulnerability index is recomputed with each component removed in turn, to see how much any single input drives the result."
+        },
+        {
+          "title": "Expert face-validity review",
+          "body": "Regional public health practitioners review whether the classification matches what they observe on the ground."
+        },
+        {
+          "title": "Clinical outcome validation (later phase)",
+          "body": "Testing the index against measured outcomes such as emergency department utilisation and avoidable admissions, once institutional data access is in place."
+        }
       ]
     },
     "tiers": {
@@ -287,18 +351,73 @@
     },
     "dataSources": {
       "heading": "Data sources",
-      "columns": { "source": "Source", "provides": "What it provides", "resolution": "Resolution", "licence": "Licence" },
+      "columns": {
+        "source": "Source",
+        "provides": "What it provides",
+        "resolution": "Resolution",
+        "licence": "Licence"
+      },
       "rows": [
-        { "source": "WorldPop", "provides": "Gridded population counts", "resolution": "100m", "licence": "CC BY 4.0" },
-        { "source": "OpenStreetMap", "provides": "Facility locations, road network", "resolution": "Point / vector", "licence": "ODbL" },
-        { "source": "GHSL (Global Human Settlement Layer)", "provides": "Built-up area and settlement classification", "resolution": "100m", "licence": "CC BY 4.0" },
-        { "source": "VIIRS (Visible Infrared Imaging Radiometer Suite)", "provides": "Night-time lights, as an economic activity proxy", "resolution": "~500m", "licence": "Public domain (NOAA)" },
-        { "source": "ACAG PM2.5 (Atmospheric Composition Analysis Group)", "provides": "Fine particulate air pollution", "resolution": "~1km", "licence": "Open, attribution required" },
-        { "source": "ERA5", "provides": "Reanalysis climate data, including heat exposure", "resolution": "~9km, hourly", "licence": "Copernicus open licence" },
-        { "source": "MODIS NDVI (Normalized Difference Vegetation Index)", "provides": "Greenery / vegetation cover", "resolution": "250m", "licence": "Public domain (NASA)" },
-        { "source": "GASTAT", "provides": "2022 census population and socioeconomic indicators", "resolution": "Region / governorate", "licence": "Open government data" },
-        { "source": "MOH Statistical Yearbook", "provides": "Facility counts, used for validation", "resolution": "Region", "licence": "Open government data" },
-        { "source": "HDX (Humanitarian Data Exchange)", "provides": "Administrative boundary polygons", "resolution": "ADM1 (region)", "licence": "Varies by dataset, open" }
+        {
+          "source": "WorldPop",
+          "provides": "Gridded population counts",
+          "resolution": "100m",
+          "licence": "CC BY 4.0"
+        },
+        {
+          "source": "OpenStreetMap",
+          "provides": "Facility locations, road network",
+          "resolution": "Point / vector",
+          "licence": "ODbL"
+        },
+        {
+          "source": "GHSL (Global Human Settlement Layer)",
+          "provides": "Built-up area and settlement classification",
+          "resolution": "100m",
+          "licence": "CC BY 4.0"
+        },
+        {
+          "source": "VIIRS (Visible Infrared Imaging Radiometer Suite)",
+          "provides": "Night-time lights, as an economic activity proxy",
+          "resolution": "~500m",
+          "licence": "Public domain (NOAA)"
+        },
+        {
+          "source": "ACAG PM2.5 (Atmospheric Composition Analysis Group)",
+          "provides": "Fine particulate air pollution",
+          "resolution": "~1km",
+          "licence": "Open, attribution required"
+        },
+        {
+          "source": "ERA5",
+          "provides": "Reanalysis climate data, including heat exposure",
+          "resolution": "~9km, hourly",
+          "licence": "Copernicus open licence"
+        },
+        {
+          "source": "MODIS NDVI (Normalized Difference Vegetation Index)",
+          "provides": "Greenery / vegetation cover",
+          "resolution": "250m",
+          "licence": "Public domain (NASA)"
+        },
+        {
+          "source": "GASTAT",
+          "provides": "2022 census population and socioeconomic indicators",
+          "resolution": "Region / governorate",
+          "licence": "Open government data"
+        },
+        {
+          "source": "MOH Statistical Yearbook",
+          "provides": "Facility counts, used for validation",
+          "resolution": "Region",
+          "licence": "Open government data"
+        },
+        {
+          "source": "HDX (Humanitarian Data Exchange)",
+          "provides": "Administrative boundary polygons",
+          "resolution": "ADM1 (region)",
+          "licence": "Varies by dataset, open"
+        }
       ]
     },
     "limitations": {
@@ -333,7 +452,9 @@
           "Internal validation (sensitivity analysis, expert review)",
           "Manuscript for peer review"
         ],
-        "dependencies": ["IRB exemption for secondary analysis of public data"]
+        "dependencies": [
+          "IRB exemption for secondary analysis of public data"
+        ]
       },
       {
         "id": "phase-2",
@@ -345,7 +466,10 @@
           "Integration of institutional data (MNGHA BESTCare records, Saudi Biobank)",
           "External validation against clinical outcomes"
         ],
-        "dependencies": ["KAIMRC IRB approval", "Institutional data-sharing agreement"]
+        "dependencies": [
+          "KAIMRC IRB approval",
+          "Institutional data-sharing agreement"
+        ]
       },
       {
         "id": "phase-3",
@@ -357,7 +481,11 @@
           "Triage questionnaire and estimated wait-time model",
           "Single-cluster pilot deployment"
         ],
-        "dependencies": ["National data linkage (NPHIES, Sehhaty, Weqaya)", "SFDA regulatory clearance as clinical decision support", "Emergency physician oversight"]
+        "dependencies": [
+          "National data linkage (NPHIES, Sehhaty, Weqaya)",
+          "SFDA regulatory clearance as clinical decision support",
+          "Emergency physician oversight"
+        ]
       }
     ]
   },
@@ -404,12 +532,20 @@
     "map": {
       "heading": "Map",
       "modeLabel": "Choropleth mode",
-      "modes": { "access": "Access score", "vulnerability": "Vulnerability score", "quadrant": "Quadrant class" },
+      "modes": {
+        "access": "Access score",
+        "vulnerability": "Vulnerability score",
+        "quadrant": "Quadrant class"
+      },
       "catchmentLabel": "Catchment",
       "catchment30": "30 minutes",
       "catchment60": "60 minutes",
       "componentsLabel": "Vulnerability components",
-      "components": { "socio": "Socioeconomic", "env": "Environmental", "disease": "Chronic disease" },
+      "components": {
+        "socio": "Socioeconomic",
+        "env": "Environmental",
+        "disease": "Chronic disease"
+      },
       "componentsHint": "Uncheck a component to see the vulnerability score and map recompute live, without it — a running leave-one-component-out sensitivity check.",
       "hoverHint": "Hover a region for scores. Click to select it."
     },
@@ -506,9 +642,15 @@
     },
     "placeholder": {
       "heading": "This policy is a placeholder",
-      "body": "Sehatlas is a pre-launch student project and does not yet process personal data beyond what is submitted through the contact form. A complete privacy policy — covering data collected, retention, and rights — will be published before any data collection beyond the contact form goes live.",
+      "body": "Sehhatlas is a pre-launch student project and does not yet process personal data beyond what is submitted through the contact form. A complete privacy policy — covering data collected, retention, and rights — will be published before any data collection beyond the contact form goes live.",
       "contactFormHeading": "Contact form data",
       "contactFormBody": "Information submitted through the contact form (name, organisation, email, message) is used only to respond to your enquiry and is not shared with third parties or used for any other purpose."
     }
+  },
+  "notFound": {
+    "eyebrow": "404",
+    "title": "This page doesn't exist",
+    "body": "The link may be out of date, or the page may have moved. These are the parts of the site that do exist:",
+    "home": "Back to home"
   }
 }

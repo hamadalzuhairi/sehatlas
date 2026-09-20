@@ -2,12 +2,16 @@
  * Working name for the venture. Swap this single constant to rename the
  * platform everywhere on the site (nav, footer, metadata, copy tokens).
  */
-export const SITE_NAME = "Sehatlas";
+export const SITE_NAME = "Sehhatlas";
 
-export const FOUNDER_NAME = "Hamad";
+export const FOUNDER_NAME = "Hamad Al-Zuhayri";
 export const FOUNDER_INSTITUTION = "King Saud bin Abdulaziz University for Health Sciences (KSAU-HS), Riyadh";
 
-export const CONTACT_EMAIL_PLACEHOLDER = "hello@sehatlas.example";
+/**
+ * Single reachable inbox for the whole site. Swap to a domain address
+ * (e.g. contact@sehhatlas.health) once Namecheap email forwarding is set up.
+ */
+export const CONTACT_EMAIL = "halzuhayri@hotmail.com";
 
 /** Real, verifiable figures only — see docs/sonnet_website_build_prompt.md Part 3, "By the numbers." */
 export const KEY_FIGURES = {

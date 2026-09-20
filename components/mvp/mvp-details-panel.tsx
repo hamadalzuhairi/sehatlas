@@ -39,7 +39,7 @@ export function MvpDetailsPanel({
   const plannerText = labels.plannerText;
 
   return (
-    <div className="rounded-xl border border-border bg-bg-raised p-5">
+    <div className="surface p-5">
       <div className="flex items-start justify-between gap-3">
         <div>
           <h3 className="text-lg font-bold text-fg">{name}</h3>

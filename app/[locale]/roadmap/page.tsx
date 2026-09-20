@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Reveal } from "@/components/reveal";
 import { StatusBadge, type FeatureStatus } from "@/components/status-badge";
@@ -11,6 +12,28 @@ type Phase = {
   deliverables: string[];
   dependencies: string[];
 };
+
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "roadmap" });
+  const title = t("hero.title");
+  const description = t("hero.subtitle");
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: `/${locale}/roadmap`,
+      languages: { en: "/en/roadmap", ar: "/ar/roadmap" },
+    },
+    openGraph: { title, description, url: `/${locale}/roadmap` },
+  };
+}
 
 export default async function RoadmapPage({
   params,

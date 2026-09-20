@@ -34,6 +34,7 @@ export function MvpMap({
   regions,
   mode,
   selectedId,
+  hoveredId,
   onHover,
   onSelect,
   labels,
@@ -54,7 +55,9 @@ export function MvpMap({
   locale: string;
 }) {
   const [geo, setGeo] = useState<GeoData | null>(null);
-  const [tooltip, setTooltip] = useState<{ x: number; y: number; regionId: string } | null>(null);
+  const [tooltip, setTooltip] = useState<
+    { x: number; y: number; boxW: number; boxH: number; regionId: string } | null
+  >(null);
   const svgRef = useRef<SVGSVGElement>(null);
 
   useEffect(() => {
@@ -129,7 +132,7 @@ export function MvpMap({
   const hoveredRegion = tooltip ? regions.find((r) => r.region_id === tooltip.regionId) : null;
 
   return (
-    <div className="relative h-[420px] w-full overflow-hidden rounded-xl border border-border bg-bg-sunken sm:h-[480px]">
+    <div className="relative h-[420px] w-full overflow-hidden rounded-2xl border border-border bg-bg-sunken shadow-[var(--elev-1)] sm:h-[480px]">
       <svg
         ref={svgRef}
         viewBox={`0 0 ${VIEW_W} ${VIEW_H}`}
@@ -142,21 +145,39 @@ export function MvpMap({
             key={p.regionId}
             d={p.d}
             fill={fillFor(p.regionId)}
-            fillOpacity={0.9}
-            stroke={selectedId === p.regionId ? "#ffffff" : "var(--bg-sunken)"}
-            strokeWidth={selectedId === p.regionId ? 2.5 : 1}
-            className="cursor-pointer transition-[fill-opacity] duration-150 hover:fill-opacity-100"
+            fillOpacity={hoveredId === p.regionId || selectedId === p.regionId ? 1 : 0.88}
+            stroke={
+              selectedId === p.regionId
+                ? "var(--fg)"
+                : hoveredId === p.regionId
+                  ? "var(--accent)"
+                  : "var(--bg-sunken)"
+            }
+            strokeWidth={selectedId === p.regionId ? 2.5 : hoveredId === p.regionId ? 1.75 : 1}
+            className="cursor-pointer transition-[fill-opacity,stroke-width] duration-150"
             onMouseEnter={(e) => {
               onHover(p.regionId);
               const rect = svgRef.current?.getBoundingClientRect();
               if (rect) {
-                setTooltip({ x: e.clientX - rect.left, y: e.clientY - rect.top, regionId: p.regionId });
+                setTooltip({
+                  x: e.clientX - rect.left,
+                  y: e.clientY - rect.top,
+                  boxW: rect.width,
+                  boxH: rect.height,
+                  regionId: p.regionId,
+                });
               }
             }}
             onMouseMove={(e) => {
               const rect = svgRef.current?.getBoundingClientRect();
               if (rect) {
-                setTooltip({ x: e.clientX - rect.left, y: e.clientY - rect.top, regionId: p.regionId });
+                setTooltip({
+                  x: e.clientX - rect.left,
+                  y: e.clientY - rect.top,
+                  boxW: rect.width,
+                  boxH: rect.height,
+                  regionId: p.regionId,
+                });
               }
             }}
             onMouseLeave={() => {
@@ -170,10 +191,12 @@ export function MvpMap({
 
       {tooltip && hoveredRegion && (
         <div
-          className="pointer-events-none absolute z-10 min-w-[160px] rounded-md border border-border bg-bg-raised px-3 py-2 text-xs shadow-lg"
+          className="pointer-events-none absolute z-10 min-w-[170px] rounded-lg border border-border bg-bg-raised px-3 py-2 text-xs shadow-[var(--elev-2)]"
           style={{
-            left: Math.min(tooltip.x + 12, VIEW_W - 180),
-            top: Math.max(tooltip.y - 12, 0),
+            // Clamped in CSS pixels against the measured container, so the
+            // card never hangs outside the map on the right or the bottom.
+            left: Math.max(8, Math.min(tooltip.x + 14, tooltip.boxW - 186)),
+            top: Math.max(8, Math.min(tooltip.y - 12, tooltip.boxH - 116)),
           }}
         >
           <p className="font-semibold text-fg">

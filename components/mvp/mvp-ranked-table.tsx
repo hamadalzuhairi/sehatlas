@@ -83,7 +83,7 @@ export function MvpRankedTable({
       },
       quadrantLabels,
     );
-    downloadCsv("sehatlas-demo-regions.csv", csv);
+    downloadCsv("sehhatlas-demo-regions.csv", csv);
   }
 
   const headers: { key: SortKey; label: string }[] = [
@@ -96,7 +96,7 @@ export function MvpRankedTable({
   ];
 
   return (
-    <div className="rounded-xl border border-border bg-bg-raised">
+    <div className="surface overflow-hidden">
       <div className="flex items-center justify-end border-b border-border p-3">
         <button
           type="button"

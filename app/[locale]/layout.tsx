@@ -44,9 +44,25 @@ export async function generateMetadata({
       template: `%s — ${t("siteName")}`,
     },
     description: t("defaultDescription"),
+    applicationName: t("siteName"),
     alternates: {
+      canonical: `/${locale}`,
       languages: { en: "/en", ar: "/ar" },
     },
+    openGraph: {
+      type: "website",
+      siteName: t("siteName"),
+      title: t("defaultTitle"),
+      description: t("defaultDescription"),
+      url: `/${locale}`,
+      locale: locale === "ar" ? "ar_SA" : "en_US",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("defaultTitle"),
+      description: t("defaultDescription"),
+    },
+    robots: { index: true, follow: true },
   };
 }
 
@@ -64,6 +80,7 @@ export default async function LocaleLayout({
 
   setRequestLocale(locale);
   const messages = await getMessages();
+  const tCommon = await getTranslations({ locale, namespace: "common" });
   const dir = locale === "ar" ? "rtl" : "ltr";
 
   return (
@@ -88,7 +105,7 @@ export default async function LocaleLayout({
             href="#main-content"
             className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:start-2 focus:z-[100] focus:rounded-md focus:bg-accent focus:px-4 focus:py-2 focus:text-accent-fg"
           >
-            Skip to content
+            {tCommon("skipToContent")}
           </a>
           <SiteNav />
           <main id="main-content" className="flex-1">

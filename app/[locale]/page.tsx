@@ -31,25 +31,27 @@ export default async function HomePage({
   return (
     <>
       {/* 1. Hero */}
-      <section className="relative overflow-hidden">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8 lg:py-24">
+      <section className="relative isolate overflow-hidden">
+        <div aria-hidden className="grid-backdrop pointer-events-none absolute inset-0 -z-10" />
+        <div aria-hidden className="accent-bloom pointer-events-none absolute inset-x-0 top-0 -z-10 h-[520px]" />
+        <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-4 py-20 sm:px-6 lg:grid-cols-[1.05fr_1fr] lg:gap-16 lg:px-8 lg:py-28">
           <div>
-            <h1 className="text-4xl font-extrabold leading-tight tracking-tight text-fg sm:text-5xl">
+            <h1 className="text-4xl font-extrabold leading-[1.07] text-fg sm:text-5xl lg:text-[3.5rem]">
               {t("hero.headline")}
             </h1>
-            <p className="mt-6 max-w-xl text-lg text-fg-muted">
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-fg-muted">
               {t("hero.subhead")}
             </p>
-            <div className="mt-8 flex flex-wrap gap-4">
+            <div className="mt-9 flex flex-wrap gap-3">
               <Link
                 href="/mvp"
-                className="rounded-full bg-accent px-6 py-3 text-sm font-semibold text-accent-fg transition-opacity hover:opacity-90"
+                className="rounded-full bg-accent px-6 py-3 text-sm font-semibold text-accent-fg shadow-[var(--elev-2)] transition-all duration-200 hover:bg-accent-strong hover:shadow-[var(--elev-3)]"
               >
                 {t("hero.ctaPrimary")}
               </Link>
               <Link
                 href="/platform"
-                className="rounded-full border border-border px-6 py-3 text-sm font-semibold text-fg transition-colors hover:border-accent hover:text-accent"
+                className="rounded-full border border-border bg-bg-raised/60 px-6 py-3 text-sm font-semibold text-fg backdrop-blur transition-colors hover:border-border-strong hover:bg-bg-raised"
               >
                 {t("hero.ctaSecondary")}
               </Link>
@@ -64,9 +66,7 @@ export default async function HomePage({
       {/* 2. Built on open data */}
       <section>
         <div className="mx-auto max-w-7xl px-4 pt-4 text-center sm:px-6 lg:px-8">
-          <p className="text-xs font-semibold uppercase tracking-widest text-fg-muted">
-            {t("dataStrip.eyebrow")}
-          </p>
+          <p className="eyebrow">{t("dataStrip.eyebrow")}</p>
         </div>
         <DataSourceStrip />
         <p className="mx-auto mt-4 max-w-7xl px-4 text-center text-xs text-fg-muted sm:px-6 lg:px-8">
@@ -77,16 +77,16 @@ export default async function HomePage({
       {/* 3. What sets this apart */}
       <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
         <Reveal>
-          <h2 className="text-3xl font-bold tracking-tight text-fg">{t("values.heading")}</h2>
-          <p className="mt-3 max-w-2xl text-fg-muted">{t("values.subheading")}</p>
+          <h2 className="text-3xl font-bold text-fg sm:text-[2rem]">{t("values.heading")}</h2>
+          <p className="mt-3 max-w-2xl leading-relaxed text-fg-muted">{t("values.subheading")}</p>
         </Reveal>
-        <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {valueCards.map((card, i) => (
             <Reveal key={card.title} delay={i * 80}>
-              <div className="h-full rounded-2xl border border-border bg-bg-raised p-6">
+              <div className="surface surface-interactive h-full p-6">
                 <div
                   aria-hidden
-                  className="mb-4 h-10 w-10 rounded-lg"
+                  className="mb-5 h-9 w-9 rounded-[0.6rem]"
                   style={{
                     background: [
                       "var(--quad-priority)",
@@ -109,10 +109,10 @@ export default async function HomePage({
       <section className="border-y border-border bg-bg-sunken">
         <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
           <Reveal>
-            <h2 className="text-3xl font-bold tracking-tight text-fg">{t("byNumbers.heading")}</h2>
-            <p className="mt-3 max-w-2xl text-fg-muted">{t("byNumbers.subheading")}</p>
+            <h2 className="text-3xl font-bold text-fg sm:text-[2rem]">{t("byNumbers.heading")}</h2>
+            <p className="mt-3 max-w-2xl leading-relaxed text-fg-muted">{t("byNumbers.subheading")}</p>
           </Reveal>
-          <div className="mt-10 grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-6">
+          <div className="mt-12 grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-6">
             {[
               { value: KEY_FIGURES.regions, label: t("byNumbers.regions") },
               { value: KEY_FIGURES.hospitals, label: t("byNumbers.hospitals") },
@@ -122,10 +122,10 @@ export default async function HomePage({
               { value: KEY_FIGURES.quadrants, label: t("byNumbers.quadrants") },
             ].map((item) => (
               <div key={item.label}>
-                <div className="text-3xl font-extrabold text-accent sm:text-4xl">
+                <div className="tnum text-3xl font-extrabold text-accent sm:text-4xl">
                   <Counter value={item.value} decimals={item.decimals ?? 0} />
                 </div>
-                <p className="mt-1 text-xs text-fg-muted">{item.label}</p>
+                <p className="mt-1.5 text-xs leading-snug text-fg-muted">{item.label}</p>
               </div>
             ))}
           </div>
@@ -135,15 +135,15 @@ export default async function HomePage({
       {/* 5. The platform tiers */}
       <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
         <Reveal>
-          <h2 className="text-3xl font-bold tracking-tight text-fg">{t("tiers.heading")}</h2>
-          <p className="mt-3 max-w-2xl text-fg-muted">{t("tiers.subheading")}</p>
+          <h2 className="text-3xl font-bold text-fg sm:text-[2rem]">{t("tiers.heading")}</h2>
+          <p className="mt-3 max-w-2xl leading-relaxed text-fg-muted">{t("tiers.subheading")}</p>
         </Reveal>
-        <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
+        <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
           {tierCards.map((card, i) => (
             <Reveal key={card.title} delay={i * 100}>
               <Link
                 href="/platform"
-                className="flex h-full flex-col rounded-2xl border border-border bg-bg-raised p-6 transition-colors hover:border-accent"
+                className="surface surface-interactive flex h-full flex-col p-6"
               >
                 <div className="flex items-center justify-between gap-2">
                   <span className="text-xs font-semibold uppercase tracking-wide text-fg-muted">
@@ -168,15 +168,15 @@ export default async function HomePage({
       <section className="border-y border-border bg-bg-sunken">
         <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
           <Reveal>
-            <h2 className="text-3xl font-bold tracking-tight text-fg">{t("journey.heading")}</h2>
-            <p className="mt-3 max-w-2xl text-fg-muted">{t("journey.subheading")}</p>
+            <h2 className="text-3xl font-bold text-fg sm:text-[2rem]">{t("journey.heading")}</h2>
+            <p className="mt-3 max-w-2xl leading-relaxed text-fg-muted">{t("journey.subheading")}</p>
           </Reveal>
-          <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
+          <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
             {journeySteps.map((step, i) => (
               <Reveal key={step.title} delay={i * 100}>
-                <div className="h-full rounded-2xl border border-border bg-bg-raised p-6">
-                  <span className="text-xs font-bold text-accent">{`0${i + 1}`}</span>
-                  <h3 className="mt-2 text-lg font-semibold text-fg">{step.title}</h3>
+                <div className="surface h-full p-6">
+                  <span className="tnum block text-2xl font-extrabold text-accent/40">{`0${i + 1}`}</span>
+                  <h3 className="mt-3 text-lg font-semibold text-fg">{step.title}</h3>
                   <p className="mt-2 text-sm text-fg-muted">{step.body}</p>
                 </div>
               </Reveal>
@@ -188,17 +188,17 @@ export default async function HomePage({
       {/* 7. Where we are */}
       <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
         <Reveal>
-          <h2 className="text-3xl font-bold tracking-tight text-fg">{t("status.heading")}</h2>
-          <p className="mt-3 max-w-2xl text-fg-muted">{t("status.subheading")}</p>
+          <h2 className="text-3xl font-bold text-fg sm:text-[2rem]">{t("status.heading")}</h2>
+          <p className="mt-3 max-w-2xl leading-relaxed text-fg-muted">{t("status.subheading")}</p>
         </Reveal>
-        <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
+        <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
           {[
             { label: t("status.built.label"), items: builtItems, color: "var(--quad-none)" },
             { label: t("status.running.label"), items: runningItems, color: "var(--quad-served)" },
             { label: t("status.pending.label"), items: pendingItems, color: "var(--quad-remote)" },
           ].map((group) => (
             <Reveal key={group.label}>
-              <div className="h-full rounded-2xl border border-border bg-bg-raised p-6">
+              <div className="surface h-full p-6">
                 <div className="flex items-center gap-2">
                   <span
                     aria-hidden
@@ -224,21 +224,27 @@ export default async function HomePage({
       </section>
 
       {/* 8. Positioning */}
-      <section className="border-y border-border">
-        <div className="mx-auto max-w-3xl px-4 py-14 text-center sm:px-6 lg:px-8">
-          <p className="text-sm text-fg-muted">{t("positioning.body")}</p>
+      <section className="border-y border-border bg-bg-sunken">
+        <div className="mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 lg:px-8">
+          <p className="text-base leading-relaxed text-fg-muted">
+            {t("positioning.body")}
+          </p>
         </div>
       </section>
 
       {/* 9. Closing CTA */}
-      <section className="mx-auto max-w-7xl px-4 py-20 text-center sm:px-6 lg:px-8">
-        <Reveal>
-          <h2 className="text-3xl font-bold tracking-tight text-fg sm:text-4xl">
+      <section className="relative isolate overflow-hidden px-4 py-24 text-center sm:px-6 lg:px-8">
+        <div
+          aria-hidden
+          className="accent-bloom pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-[360px] rotate-180"
+        />
+        <Reveal className="mx-auto max-w-3xl">
+          <h2 className="text-3xl font-bold text-fg sm:text-4xl">
             {t("closingCta.heading")}
           </h2>
           <Link
             href="/contact"
-            className="mt-8 inline-block rounded-full bg-accent px-8 py-3 text-sm font-semibold text-accent-fg transition-opacity hover:opacity-90"
+            className="mt-9 inline-block rounded-full bg-accent px-8 py-3.5 text-sm font-semibold text-accent-fg shadow-[var(--elev-2)] transition-all duration-200 hover:bg-accent-strong hover:shadow-[var(--elev-3)]"
           >
             {t("closingCta.cta")}
           </Link>

@@ -1,7 +1,30 @@
+import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Reveal } from "@/components/reveal";
 
 type Section = { title: string; body: string };
+
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "research" });
+  const title = t("hero.title");
+  const description = t("hero.subtitle");
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: `/${locale}/research`,
+      languages: { en: "/en/research", ar: "/ar/research" },
+    },
+    openGraph: { title, description, url: `/${locale}/research` },
+  };
+}
 
 export default async function ResearchPage({
   params,

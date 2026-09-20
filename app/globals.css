@@ -1,19 +1,21 @@
 @import "tailwindcss";
 
 /* ---------------------------------------------------------------------- */
-/* Theme tokens. Dark is the default register; [data-theme="light"] flips */
-/* it. Values are original — do not reuse Lean Business Services' palette. */
+/* Theme tokens. Dark is the default register; [data-theme="light"] flips  */
+/* it. Values are original — do not reuse another company's palette.       */
 /* ---------------------------------------------------------------------- */
 :root {
-  --bg: #f6f5f2;
+  --bg: #faf9f6;
   --bg-raised: #ffffff;
-  --bg-sunken: #ece9e3;
-  --fg: #17181c;
-  --fg-muted: #52545c;
-  --border: #dcd9d1;
+  --bg-sunken: #f0eee8;
+  --fg: #14161a;
+  --fg-muted: #565962;
+  --border: #e2dfd7;
+  --border-strong: #cfcbc1;
   --accent: #0a6e5f;
+  --accent-strong: #0d8a76;
   --accent-fg: #ffffff;
-  --accent-soft: #d9efe9;
+  --accent-soft: #dcf0eb;
 
   --quad-priority: #b0413e;
   --quad-served: #b8863b;
@@ -21,20 +23,31 @@
   --quad-none: #4c8c5b;
 
   --focus-ring: #0a6e5f;
-  --scrollbar: #c8c4ba;
+  --scrollbar: #cdc9be;
 
   --banner-bg: #7a2420;
   --banner-fg: #fff4f2;
+
+  /* Layered elevation — soft and wide, never a hard drop shadow. */
+  --elev-1: 0 1px 2px rgba(20, 22, 26, 0.04), 0 1px 3px rgba(20, 22, 26, 0.05);
+  --elev-2: 0 2px 4px rgba(20, 22, 26, 0.04), 0 8px 24px rgba(20, 22, 26, 0.07);
+  --elev-3: 0 4px 8px rgba(20, 22, 26, 0.05), 0 20px 48px rgba(20, 22, 26, 0.1);
+
+  /* Hairline highlight along the top edge of raised surfaces. */
+  --sheen: rgba(255, 255, 255, 0.9);
+  --grid-line: rgba(20, 22, 26, 0.045);
 }
 
 :root[data-theme="dark"] {
-  --bg: #0d0f14;
-  --bg-raised: #161923;
-  --bg-sunken: #090a0d;
+  --bg: #0b0d12;
+  --bg-raised: #14171f;
+  --bg-sunken: #070809;
   --fg: #edeef2;
   --fg-muted: #a1a5b3;
-  --border: #262a38;
+  --border: #232734;
+  --border-strong: #333849;
   --accent: #35c4a8;
+  --accent-strong: #4fdcc0;
   --accent-fg: #05201b;
   --accent-soft: #12352f;
 
@@ -45,17 +58,26 @@
 
   --focus-ring: #35c4a8;
   --scrollbar: #2c3140;
+
+  --elev-1: 0 1px 2px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.3);
+  --elev-2: 0 2px 4px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.45);
+  --elev-3: 0 4px 8px rgba(0, 0, 0, 0.45), 0 20px 48px rgba(0, 0, 0, 0.55);
+
+  --sheen: rgba(255, 255, 255, 0.06);
+  --grid-line: rgba(255, 255, 255, 0.04);
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #0d0f14;
-    --bg-raised: #161923;
-    --bg-sunken: #090a0d;
+    --bg: #0b0d12;
+    --bg-raised: #14171f;
+    --bg-sunken: #070809;
     --fg: #edeef2;
     --fg-muted: #a1a5b3;
-    --border: #262a38;
+    --border: #232734;
+    --border-strong: #333849;
     --accent: #35c4a8;
+    --accent-strong: #4fdcc0;
     --accent-fg: #05201b;
     --accent-soft: #12352f;
 
@@ -66,6 +88,13 @@
 
     --focus-ring: #35c4a8;
     --scrollbar: #2c3140;
+
+    --elev-1: 0 1px 2px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.3);
+    --elev-2: 0 2px 4px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.45);
+    --elev-3: 0 4px 8px rgba(0, 0, 0, 0.45), 0 20px 48px rgba(0, 0, 0, 0.55);
+
+    --sheen: rgba(255, 255, 255, 0.06);
+    --grid-line: rgba(255, 255, 255, 0.04);
   }
 }
 
@@ -76,7 +105,9 @@
   --color-fg: var(--fg);
   --color-fg-muted: var(--fg-muted);
   --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
   --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
   --color-accent-fg: var(--accent-fg);
   --color-accent-soft: var(--accent-soft);
   --color-quad-priority: var(--quad-priority);
@@ -87,10 +118,17 @@
   --color-banner-fg: var(--banner-fg);
   --font-sans: var(--font-body);
   --font-arabic: var(--font-body-ar);
+  --shadow-elev-1: var(--elev-1);
+  --shadow-elev-2: var(--elev-2);
+  --shadow-elev-3: var(--elev-3);
 }
 
 html {
   color-scheme: light dark;
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 :root[data-theme="dark"] {
   color-scheme: dark;
@@ -108,6 +146,31 @@ body {
   color: var(--fg);
 }
 
+/* ---------------------------------------------------------------------- */
+/* Typography rhythm                                                       */
+/* ---------------------------------------------------------------------- */
+h1, h2, h3, h4 {
+  text-wrap: balance;
+}
+h1 {
+  letter-spacing: -0.028em;
+}
+h2 {
+  letter-spacing: -0.022em;
+}
+h3 {
+  letter-spacing: -0.014em;
+}
+p, li {
+  text-wrap: pretty;
+}
+/* Arabic does not take negative tracking well — reset it in RTL. */
+[dir="rtl"] h1,
+[dir="rtl"] h2,
+[dir="rtl"] h3 {
+  letter-spacing: 0;
+}
+
 ::selection {
   background: var(--accent-soft);
   color: var(--fg);
@@ -123,11 +186,18 @@ body {
 ::-webkit-scrollbar-thumb {
   background: var(--scrollbar);
   border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-strong);
+  background-clip: content-box;
 }
 
 :focus-visible {
   outline: 2px solid var(--focus-ring);
-  outline-offset: 2px;
+  outline-offset: 3px;
+  border-radius: 4px;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -143,17 +213,115 @@ body {
   transform: scaleX(-1);
 }
 
-.reveal {
-  opacity: 0;
-  transform: translateY(12px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+/* ---------------------------------------------------------------------- */
+/* Surfaces                                                                */
+/* ---------------------------------------------------------------------- */
+
+/* A raised card: hairline border, soft elevation, and a 1px sheen along   */
+/* the top edge so the surface reads as lit from above.                    */
+.surface {
+  position: relative;
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  box-shadow: var(--elev-1);
 }
-.reveal.is-visible {
+.surface::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 1px;
+  border-radius: 1rem 1rem 0 0;
+  background: linear-gradient(90deg, transparent, var(--sheen), transparent);
+  pointer-events: none;
+}
+
+/* Interactive card: lifts a touch on hover, accent-tinted border. */
+.surface-interactive {
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.25s ease;
+}
+.surface-interactive:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--elev-2);
+  border-color: color-mix(in srgb, var(--accent) 38%, var(--border));
+}
+
+/* Faint blueprint grid — sits behind the hero. */
+.grid-backdrop {
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 64px 64px;
+  background-position: center;
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
+}
+
+/* Soft accent bloom sitting behind the hero copy. */
+.accent-bloom {
+  background: radial-gradient(
+    ellipse 60% 50% at 50% 0%,
+    color-mix(in srgb, var(--accent) 16%, transparent),
+    transparent 70%
+  );
+}
+
+.text-gradient {
+  background: linear-gradient(
+    135deg,
+    var(--fg) 20%,
+    color-mix(in srgb, var(--fg) 55%, var(--accent)) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Small-caps section label. */
+.eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+[dir="rtl"] .eyebrow {
+  letter-spacing: 0;
+}
+
+/* Hairline rule that fades out at both ends. */
+.rule-fade {
+  height: 1px;
+  border: 0;
+  background: linear-gradient(90deg, transparent, var(--border-strong), transparent);
+}
+
+/* Tabular figures for stat blocks and data tables. */
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Scroll reveal                                                           */
+/* ---------------------------------------------------------------------- */
+/* Content is only hidden once we know JS is running — the theme init      */
+/* script sets data-js before first paint. Without JS nothing disappears.   */
+html[data-js] .reveal {
+  opacity: 0;
+  transform: translateY(14px);
+}
+.reveal {
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+html[data-js] .reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
 }
 @media (prefers-reduced-motion: reduce) {
-  .reveal {
+  html[data-js] .reveal {
     opacity: 1;
     transform: none;
     transition: none;
@@ -178,26 +346,12 @@ body {
 [dir="rtl"] .animate-marquee {
   animation-direction: reverse;
 }
+.marquee-mask {
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
 @media (prefers-reduced-motion: reduce) {
   .animate-marquee {
     animation: none;
   }
-}
-
-.maplibregl-popup-content {
-  background: var(--bg-raised) !important;
-  color: var(--fg) !important;
-  border: 1px solid var(--border);
-  border-radius: 0.5rem;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
-}
-.maplibregl-popup-tip {
-  border-top-color: var(--bg-raised) !important;
-}
-.maplibregl-ctrl-attrib {
-  background: color-mix(in srgb, var(--bg) 70%, transparent) !important;
-  color: var(--fg-muted) !important;
-}
-.maplibregl-ctrl-attrib a {
-  color: var(--fg-muted) !important;
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { CONTACT_EMAIL_PLACEHOLDER } from "@/lib/site-config";
+import { CONTACT_EMAIL } from "@/lib/site-config";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -133,8 +133,8 @@ export function ContactForm({
 
       <p className="text-xs text-fg-muted">
         {labels.emailFallback}{" "}
-        <a href={`mailto:${CONTACT_EMAIL_PLACEHOLDER}`} className="text-accent hover:underline">
-          {CONTACT_EMAIL_PLACEHOLDER}
+        <a href={`mailto:${CONTACT_EMAIL}`} className="text-accent hover:underline">
+          {CONTACT_EMAIL}
         </a>
       </p>
     </form>

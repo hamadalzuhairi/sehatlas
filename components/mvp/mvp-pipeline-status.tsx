@@ -19,7 +19,7 @@ export function MvpPipelineStatus({
   const modules = Object.entries(pipelineStatus) as [string, FeatureStatus][];
 
   return (
-    <div className="rounded-xl border border-border bg-bg-raised">
+    <div className="surface overflow-hidden">
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}

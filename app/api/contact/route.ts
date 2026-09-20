@@ -28,7 +28,6 @@ export async function POST(request: Request) {
       return NextResponse.json({ ok: false, error: "delivery_failed" }, { status: 502 });
     }
   } else {
-    // eslint-disable-next-line no-console
     console.log("[contact form submission — CONTACT_FORM_ENDPOINT not configured]", body);
   }
 

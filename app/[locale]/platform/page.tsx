@@ -1,10 +1,33 @@
+import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Reveal } from "@/components/reveal";
-import { StatusBadge, type FeatureStatus } from "@/components/status-badge";
+import { StatusBadge } from "@/components/status-badge";
 
 type Component = { title: string; body: string };
 type ValidationItem = { title: string; body: string };
 type DataRow = { source: string; provides: string; resolution: string; licence: string };
+
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "platform" });
+  const title = t("hero.title");
+  const description = t("hero.subtitle");
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: `/${locale}/platform`,
+      languages: { en: "/en/platform", ar: "/ar/platform" },
+    },
+    openGraph: { title, description, url: `/${locale}/platform` },
+  };
+}
 
 export default async function PlatformPage({
   params,
@@ -34,7 +57,7 @@ export default async function PlatformPage({
       <Reveal className="mt-14">
         <h2 className="text-2xl font-bold text-fg">{t("axes.heading")}</h2>
         <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
-          <div className="rounded-2xl border border-border bg-bg-raised p-6">
+          <div className="surface p-6">
             <h3 className="text-lg font-semibold text-accent">{t("axes.access.title")}</h3>
             <p className="mt-2 text-sm text-fg-muted">{t("axes.access.body")}</p>
             <p className="mt-4 text-xs font-semibold uppercase tracking-wide text-fg-muted">
@@ -49,7 +72,7 @@ export default async function PlatformPage({
               ))}
             </ul>
           </div>
-          <div className="rounded-2xl border border-border bg-bg-raised p-6">
+          <div className="surface p-6">
             <h3 className="text-lg font-semibold text-accent">{t("axes.vulnerability.title")}</h3>
             <p className="mt-2 text-sm text-fg-muted">{t("axes.vulnerability.body")}</p>
             <p className="mt-4 text-xs font-semibold uppercase tracking-wide text-fg-muted">
@@ -73,7 +96,7 @@ export default async function PlatformPage({
         <p className="mt-3 text-fg-muted">{t("quadrant.body")}</p>
         <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
           {quadrantKeys.map((key) => (
-            <div key={key} className="rounded-xl border border-border bg-bg-raised p-4">
+            <div key={key} className="surface p-4">
               <h3 className="font-semibold text-fg">{t(`quadrant.cells.${key}.title`)}</h3>
               <p className="text-xs text-fg-muted">{t(`quadrant.cells.${key}.subtitle`)}</p>
               <p className="mt-2 text-sm text-fg-muted">{t(`quadrant.cells.${key}.body`)}</p>
@@ -108,14 +131,14 @@ export default async function PlatformPage({
       {/* Tiers */}
       <Reveal className="mt-14">
         <h2 className="text-xl font-bold text-fg">{t("tiers.heading")}</h2>
-        <div className="mt-4 rounded-2xl border border-border bg-bg-raised p-6">
+        <div className="mt-4 surface p-6">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <h3 className="font-semibold text-fg">{t("tiers.tier1.title")}</h3>
             <StatusBadge status="in-development" label={tCommon("status.in-development")} />
           </div>
           <p className="mt-2 text-sm text-fg-muted">{t("tiers.tier1.body")}</p>
         </div>
-        <div className="mt-4 rounded-2xl border border-border bg-bg-raised p-6">
+        <div className="mt-4 surface p-6">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <h3 className="font-semibold text-fg">{t("tiers.tier2.title")}</h3>
             <StatusBadge status="permission-dependent" label={tCommon("status.permission-dependent")} />
