@@ -1,5 +1,6 @@
 "use client";
 
+import { useCallback, useSyncExternalStore } from "react";
 import {
   ScatterChart,
   Scatter,
@@ -14,6 +15,26 @@ import {
 } from "recharts";
 import type { ComputedRegion } from "@/lib/mvp/types";
 import { QUADRANT_COLOR_VAR } from "@/lib/mvp/quadrant-style";
+
+/**
+ * Thirteen labelled points do not fit in a phone-width plot — the names
+ * collide into an unreadable mass. Below this width only the selected point
+ * is named; the tooltip and the ranked table carry the rest.
+ */
+const LABEL_BREAKPOINT = "(min-width: 640px)";
+
+function useMediaQuery(query: string, serverValue: boolean) {
+  const subscribe = useCallback(
+    (onChange: () => void) => {
+      const media = window.matchMedia(query);
+      media.addEventListener("change", onChange);
+      return () => media.removeEventListener("change", onChange);
+    },
+    [query],
+  );
+  const getSnapshot = useCallback(() => window.matchMedia(query).matches, [query]);
+  return useSyncExternalStore(subscribe, getSnapshot, () => serverValue);
+}
 
 export function MvpScatter({
   regions,
@@ -30,6 +51,8 @@ export function MvpScatter({
   labels: { xAxis: string; yAxis: string; accessLabel: string; vulnerabilityLabel: string; quadrant: Record<string, string> };
   locale: string;
 }) {
+  const showAllLabels = useMediaQuery(LABEL_BREAKPOINT, true);
+
   const data = regions.map((r) => ({
     ...r,
     x: r.access,
@@ -105,7 +128,7 @@ export function MvpScatter({
               if (!active || !payload?.length) return null;
               const d = payload[0].payload as (typeof data)[number];
               return (
-                <div className="rounded-md border border-border bg-bg-raised px-3 py-2 text-xs shadow-lg">
+                <div className="rounded-lg border border-border bg-bg-raised px-3 py-2 text-xs shadow-[var(--elev-2)]">
                   <p className="font-semibold text-fg">{d.name}</p>
                   <p className="text-fg-muted">{labels.accessLabel}: {d.access.toFixed(0)}</p>
                   <p className="text-fg-muted">{labels.vulnerabilityLabel}: {d.vulnerability.toFixed(0)}</p>
@@ -121,25 +144,42 @@ export function MvpScatter({
             shape={(props: unknown) => {
               const p = props as { cx: number; cy: number; payload: (typeof data)[number] };
               const isSelected = p.payload.region_id === selectedId;
+              const showLabel = showAllLabels || isSelected;
+              const name =
+                p.payload.name.length > 14
+                  ? `${p.payload.name.slice(0, 13)}…`
+                  : p.payload.name;
+
               return (
                 <g style={{ cursor: "pointer" }}>
+                  {/* A larger transparent disc keeps the tap target usable on
+                      touch, where the visible dot is only 13px across. */}
+                  <circle cx={p.cx} cy={p.cy} r={16} fill="transparent" />
                   <circle
                     cx={p.cx}
                     cy={p.cy}
                     r={isSelected ? 9 : 6.5}
                     fill={QUADRANT_COLOR_VAR[p.payload.quadrant]}
-                    stroke={isSelected ? "#ffffff" : "var(--bg)"}
+                    stroke={isSelected ? "var(--fg)" : "var(--bg)"}
                     strokeWidth={isSelected ? 2 : 1}
                   />
-                  <text
-                    x={p.cx}
-                    y={p.cy - 12}
-                    textAnchor="middle"
-                    fontSize={10}
-                    fill="var(--fg-muted)"
-                  >
-                    {p.payload.name.length > 14 ? `${p.payload.name.slice(0, 13)}…` : p.payload.name}
-                  </text>
+                  {showLabel && (
+                    <text
+                      x={p.cx}
+                      y={p.cy - (isSelected ? 15 : 12)}
+                      textAnchor="middle"
+                      fontSize={isSelected ? 11 : 10}
+                      fontWeight={isSelected ? 600 : 400}
+                      fill={isSelected ? "var(--fg)" : "var(--fg-muted)"}
+                      // Halo, so a name crossing a grid line stays readable.
+                      stroke="var(--bg)"
+                      strokeWidth={3}
+                      paintOrder="stroke"
+                      style={{ pointerEvents: "none" }}
+                    >
+                      {name}
+                    </text>
+                  )}
                 </g>
               );
             }}
