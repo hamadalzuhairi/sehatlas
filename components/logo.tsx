@@ -47,7 +47,7 @@ export function Logo({
   return (
     <span className={clsx("inline-flex items-center gap-2.5", className)}>
       <LogoMark size={size} />
-      <span className={clsx("font-semibold tracking-tight text-fg", textClassName)}>
+      <span className={clsx("whitespace-nowrap font-semibold tracking-tight text-fg", textClassName)}>
         {name}
       </span>
     </span>
