@@ -46,10 +46,7 @@ export function SiteFooter() {
                 {t("reach.title")}
               </h3>
               <ul className="mt-4 space-y-2.5 text-sm">
-                <li><Link href="/contact" className="text-fg-muted transition-colors hover:text-accent">{t("reach.general")}</Link></li>
-                <li><Link href="/contact" className="text-fg-muted transition-colors hover:text-accent">{t("reach.research")}</Link></li>
-                <li><Link href="/contact" className="text-fg-muted transition-colors hover:text-accent">{t("reach.partnership")}</Link></li>
-                <li><Link href="/contact" className="text-fg-muted transition-colors hover:text-accent">{t("reach.press")}</Link></li>
+                <li><Link href="/contact" className="text-fg-muted transition-colors hover:text-accent">{t("reach.contact")}</Link></li>
               </ul>
             </div>
           </div>
