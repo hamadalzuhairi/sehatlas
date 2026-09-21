@@ -65,8 +65,7 @@
       "invalid": "Please enter a valid email address."
     },
     "studentProject": "An independent research project by a student at KSAU-HS. Not an official product of KSAU-HS, MNGHA, or the Ministry of Health.",
-    "rights": "All rights reserved.",
-    "contactTitle": "Contact"
+    "rights": "All rights reserved."
   },
   "home": {
     "hero": {
@@ -633,8 +632,7 @@
       "submitting": "Sending…",
       "successTitle": "Message sent",
       "successBody": "Thank you — this will be routed to the founder directly. Expect a reply within a few days.",
-      "errorBody": "Something went wrong sending this. Please try again, or email directly.",
-      "emailFallback": "You can also reach us directly at"
+      "errorBody": "Something went wrong sending this. Please try again in a moment."
     }
   },
   "privacy": {

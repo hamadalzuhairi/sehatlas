@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { CONTACT_EMAIL } from "@/lib/site-config";
 import { sendEnquiry } from "@/lib/send-enquiry";
 
 type Status = "idle" | "submitting" | "success" | "error";
@@ -21,7 +20,6 @@ export function ContactForm({
     successTitle: string;
     successBody: string;
     errorBody: string;
-    emailFallback: string;
   };
 }) {
   const [status, setStatus] = useState<Status>("idle");
@@ -138,10 +136,7 @@ export function ContactForm({
 
       {status === "error" && (
         <p role="alert" className="text-sm text-quad-priority">
-          {labels.errorBody}{" "}
-          <a href={`mailto:${CONTACT_EMAIL}`} className="underline">
-            {CONTACT_EMAIL}
-          </a>
+          {labels.errorBody}
         </p>
       )}
 
@@ -152,13 +147,6 @@ export function ContactForm({
       >
         {status === "submitting" ? labels.submitting : labels.submit}
       </button>
-
-      <p className="text-xs text-fg-muted">
-        {labels.emailFallback}{" "}
-        <a href={`mailto:${CONTACT_EMAIL}`} className="text-accent hover:underline">
-          {CONTACT_EMAIL}
-        </a>
-      </p>
     </form>
   );
 }

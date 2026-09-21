@@ -1,4 +1,4 @@
-import { CONTACT_EMAIL, SITE_NAME } from "@/lib/site-config";
+import { CONTACT_EMAIL, CONTACT_FORM_ALIAS, SITE_NAME } from "@/lib/site-config";
 
 export type Enquiry = {
   name: string;
@@ -27,7 +27,9 @@ export async function sendEnquiry(enquiry: Enquiry): Promise<boolean> {
 
   try {
     const response = await fetch(
-      `https://formsubmit.co/ajax/${encodeURIComponent(CONTACT_EMAIL)}`,
+      `https://formsubmit.co/ajax/${encodeURIComponent(
+        CONTACT_FORM_ALIAS || CONTACT_EMAIL,
+      )}`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },

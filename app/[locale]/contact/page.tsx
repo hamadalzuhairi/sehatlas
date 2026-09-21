@@ -58,7 +58,6 @@ export default async function ContactPage({
             successTitle: t("form.successTitle"),
             successBody: t("form.successBody"),
             errorBody: t("form.errorBody"),
-            emailFallback: t("form.emailFallback"),
           }}
         />
       </div>

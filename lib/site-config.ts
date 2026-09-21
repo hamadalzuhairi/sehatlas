@@ -13,6 +13,16 @@ export const FOUNDER_INSTITUTION = "King Saud bin Abdulaziz University for Healt
  */
 export const CONTACT_EMAIL = "halzuhayri@hotmail.com";
 
+/**
+ * FormSubmit's hashed endpoint alias, from the activation email.
+ *
+ * The enquiry is sent from the visitor's browser, so whatever address it
+ * posts to ends up readable in the JavaScript bundle. Setting the alias here
+ * means the bundle carries an opaque token instead of the real address.
+ * Leave empty to post to CONTACT_EMAIL directly.
+ */
+export const CONTACT_FORM_ALIAS = "";
+
 /** Real, verifiable figures only — see docs/sonnet_website_build_prompt.md Part 3, "By the numbers." */
 export const KEY_FIGURES = {
   regions: 13,

@@ -1,6 +1,5 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { CONTACT_EMAIL } from "@/lib/site-config";
 import { NewsletterForm } from "./newsletter-form";
 import { Logo } from "./logo";
 
@@ -26,17 +25,6 @@ export function SiteFooter() {
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-fg-muted">
               {t("tagline")}
             </p>
-            <div className="mt-5">
-              <h3 className="text-xs font-semibold uppercase tracking-wider text-fg-muted">
-                {t("contactTitle")}
-              </h3>
-              <a
-                href={`mailto:${CONTACT_EMAIL}`}
-                className="mt-1.5 inline-block text-sm text-accent transition-opacity hover:opacity-80"
-              >
-                {CONTACT_EMAIL}
-              </a>
-            </div>
           </div>
 
           <div className="grid grid-cols-2 gap-8 md:col-span-5 md:grid-cols-3">
