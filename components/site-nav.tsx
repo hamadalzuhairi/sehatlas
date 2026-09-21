@@ -35,8 +35,19 @@ export function SiteNav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Escape is the keyboard equivalent of tapping the backdrop.
+  useEffect(() => {
+    if (!open) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [open]);
+
   return (
-    <header
+    <>
+      <header
       className={clsx(
         "sticky top-0 z-50 transition-[background-color,border-color,box-shadow] duration-300",
         "border-b bg-bg/80 backdrop-blur-xl supports-[backdrop-filter]:bg-bg/65",
@@ -136,7 +147,7 @@ export function SiteNav() {
       {open && (
         <div
           id="mobile-nav"
-          className="border-t border-border bg-bg/95 px-4 pb-5 pt-3 backdrop-blur-xl lg:hidden"
+          className="relative z-50 border-t border-border bg-bg/95 px-4 pb-5 pt-3 backdrop-blur-xl lg:hidden"
         >
           <nav className="flex flex-col gap-0.5" aria-label="Primary mobile">
             {ROUTES.map((route) => {
@@ -180,6 +191,20 @@ export function SiteNav() {
           </Link>
         </div>
       )}
-    </header>
+      </header>
+
+      {/* A tap anywhere outside the sheet closes it. This has to live outside
+          the header: the header's backdrop-blur makes it a containing block
+          for fixed children, which would clip the backdrop to the header. */}
+      {open && (
+        <button
+          type="button"
+          tabIndex={-1}
+          aria-label={t("closeMenu")}
+          onClick={() => setOpen(false)}
+          className="fixed inset-0 z-40 cursor-default bg-bg/70 backdrop-blur-sm lg:hidden"
+        />
+      )}
+    </>
   );
 }
