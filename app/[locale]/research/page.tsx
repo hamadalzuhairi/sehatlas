@@ -52,9 +52,11 @@ export default async function ResearchPage({
         ))}
       </div>
 
-      <Reveal className="mt-14 rounded-2xl border border-dashed border-border bg-bg-raised p-6">
+      <Reveal className="doc-section mt-14">
         <h2 className="text-lg font-bold text-fg">{t("publications.heading")}</h2>
-        <p className="mt-2 text-sm italic text-fg-muted">{t("publications.placeholder")}</p>
+        <div className="rounded-2xl border border-dashed border-border bg-bg-raised p-6">
+          <p className="text-sm italic text-fg-muted">{t("publications.placeholder")}</p>
+        </div>
       </Reveal>
     </div>
   );

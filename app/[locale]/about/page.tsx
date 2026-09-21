@@ -74,9 +74,10 @@ export default async function AboutPage({
         </div>
       </Reveal>
 
-      <Reveal className="surface mt-14 p-7">
+      <Reveal className="doc-section mt-14">
         <h2 className="text-2xl font-bold text-fg">{t("founder.heading")}</h2>
-        <div className="mt-5 flex items-start gap-4">
+        <div className="surface p-7">
+        <div className="flex items-start gap-4">
           <span
             aria-hidden
             className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-accent-soft text-sm font-bold text-accent"
@@ -89,6 +90,7 @@ export default async function AboutPage({
           </div>
         </div>
         <p className="mt-5 leading-relaxed text-fg-muted">{t("founder.bio")}</p>
+        </div>
       </Reveal>
 
       <Reveal className="doc-section mt-14">

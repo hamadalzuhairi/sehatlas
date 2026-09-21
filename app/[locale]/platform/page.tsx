@@ -160,9 +160,9 @@ export default async function PlatformPage({
       </Reveal>
 
       {/* Data sources */}
-      <Reveal className="mt-14">
+      <Reveal className="doc-section mt-14">
         <h2 className="text-xl font-bold text-fg">{t("dataSources.heading")}</h2>
-        <div className="mt-4 overflow-x-auto rounded-xl border border-border">
+        <div className="overflow-x-auto rounded-xl border border-border">
           <table className="w-full min-w-[640px] text-sm">
             <thead>
               <tr className="border-b border-border text-xs uppercase tracking-wide text-fg-muted">
@@ -187,9 +187,10 @@ export default async function PlatformPage({
       </Reveal>
 
       {/* Limitations */}
-      <Reveal className="mt-14 rounded-2xl border border-quad-served/40 bg-quad-served/10 p-6">
+      <Reveal className="doc-section mt-14">
         <h2 className="text-xl font-bold text-fg">{t("limitations.heading")}</h2>
-        <ul className="mt-3 space-y-2 text-sm text-fg-muted">
+        <div className="rounded-2xl border border-quad-served/40 bg-quad-served/10 p-6">
+        <ul className="space-y-2 text-sm text-fg-muted">
           {limitations.map((item) => (
             <li key={item} className="ps-3 relative">
               <span className="absolute start-0 top-2 h-1 w-1 rounded-full bg-quad-served" />
@@ -197,6 +198,7 @@ export default async function PlatformPage({
             </li>
           ))}
         </ul>
+        </div>
       </Reveal>
     </div>
   );

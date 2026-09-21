@@ -438,6 +438,8 @@
       "subtitle": "Phase 2 and Phase 3 items are contingent on IRB approval, institutional partnership, and regulatory assessment — they are not commitments to a timeline."
     },
     "currentSprintHeading": "Current sprint",
+    "deliverablesLabel": "Deliverables",
+    "dependenciesLabel": "Dependencies",
     "phases": [
       {
         "id": "phase-1",

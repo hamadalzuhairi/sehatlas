@@ -55,7 +55,7 @@ export default async function RoadmapPage({
       <h1 className="title-measure mt-2 text-3xl font-extrabold tracking-tight text-fg sm:text-4xl">{t("hero.title")}</h1>
       <p className="measure mt-4 text-lg text-fg-muted">{t("hero.subtitle")}</p>
 
-      <Reveal className="mt-10 rounded-xl border border-accent/40 bg-accent-soft p-4">
+      <Reveal className="measure mt-10 rounded-xl border border-accent/40 bg-accent-soft p-4">
         <p className="text-xs font-semibold uppercase tracking-wide text-accent">
           {t("currentSprintHeading")}
         </p>
@@ -72,33 +72,37 @@ export default async function RoadmapPage({
             </div>
             <p className={`${proseFill(phase.summary)} mt-2 text-fg-muted`}>{phase.summary}</p>
 
-            <p className="mt-4 text-xs font-semibold uppercase tracking-wide text-fg-muted">
-              Deliverables
-            </p>
-            <ul className="mt-1.5 space-y-1 text-sm text-fg-muted">
-              {phase.deliverables.map((d) => (
-                <li key={d} className="ps-3 relative">
-                  <span className="absolute start-0 top-2 h-1 w-1 rounded-full bg-fg-muted" />
-                  {d}
-                </li>
-              ))}
-            </ul>
-
-            {phase.dependencies.length > 0 && (
-              <>
-                <p className="mt-4 text-xs font-semibold uppercase tracking-wide text-quad-served">
-                  Dependencies
+            <div className="mt-5 grid gap-6 xl:grid-cols-2 xl:gap-12">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wide text-fg-muted">
+                  {t("deliverablesLabel")}
                 </p>
                 <ul className="mt-1.5 space-y-1 text-sm text-fg-muted">
-                  {phase.dependencies.map((d) => (
+                  {phase.deliverables.map((d) => (
                     <li key={d} className="ps-3 relative">
-                      <span className="absolute start-0 top-2 h-1 w-1 rounded-full bg-quad-served" />
+                      <span className="absolute start-0 top-2 h-1 w-1 rounded-full bg-fg-muted" />
                       {d}
                     </li>
                   ))}
                 </ul>
-              </>
-            )}
+              </div>
+
+              {phase.dependencies.length > 0 && (
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wide text-quad-served">
+                    {t("dependenciesLabel")}
+                  </p>
+                  <ul className="mt-1.5 space-y-1 text-sm text-fg-muted">
+                    {phase.dependencies.map((d) => (
+                      <li key={d} className="ps-3 relative">
+                        <span className="absolute start-0 top-2 h-1 w-1 rounded-full bg-quad-served" />
+                        {d}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
           </Reveal>
         ))}
       </div>
