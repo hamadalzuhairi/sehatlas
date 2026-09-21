@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { CONTACT_EMAIL } from "@/lib/site-config";
+import { sendEnquiry } from "@/lib/send-enquiry";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -27,20 +28,25 @@ export function ContactForm({
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setStatus("submitting");
     const form = new FormData(e.currentTarget);
-    const payload = Object.fromEntries(form.entries());
+    const payload = Object.fromEntries(form.entries()) as Record<string, string>;
 
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-      setStatus(res.ok ? "success" : "error");
-    } catch {
-      setStatus("error");
+    // Honeypot: hidden from people, so anything in it is a bot. Show the
+    // success screen without sending, rather than teaching it to retry.
+    if (payload.hp_field) {
+      setStatus("success");
+      return;
     }
+
+    setStatus("submitting");
+    const sent = await sendEnquiry({
+      name: payload.name ?? "",
+      email: payload.email ?? "",
+      message: payload.message ?? "",
+      organisation: payload.organisation ?? "",
+      enquiryType: payload.enquiryType ?? "general",
+    });
+    setStatus(sent ? "success" : "error");
   }
 
   if (status === "success") {

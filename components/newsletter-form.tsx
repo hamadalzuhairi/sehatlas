@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { sendEnquiry } from "@/lib/send-enquiry";
 
 type Status = "idle" | "submitting" | "success" | "error" | "invalid";
 
@@ -27,21 +28,13 @@ export function NewsletterForm({
       return;
     }
     setStatus("submitting");
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: "Newsletter subscriber",
-          email,
-          enquiryType: "newsletter",
-          message: "Requested an update when Phase 1 results are published.",
-        }),
-      });
-      setStatus(res.ok ? "success" : "error");
-    } catch {
-      setStatus("error");
-    }
+    const sent = await sendEnquiry({
+      name: "Newsletter subscriber",
+      email,
+      enquiryType: "newsletter",
+      message: "Requested an update when Phase 1 results are published.",
+    });
+    setStatus(sent ? "success" : "error");
   }
 
   if (status === "success") {
