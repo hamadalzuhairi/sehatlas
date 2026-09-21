@@ -469,3 +469,19 @@ html[data-js] .reveal.is-visible {
 .title-measure {
   max-width: 26ch;
 }
+
+/* Footer column heading. Uppercase and letter-spacing are Latin devices —
+   Arabic has no case, and spacing pulls joined letterforms apart, so RTL
+   gets a slightly larger size instead. */
+.col-heading {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--fg);
+}
+[dir="rtl"] .col-heading {
+  font-size: 0.875rem;
+  text-transform: none;
+  letter-spacing: 0;
+}

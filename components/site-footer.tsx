@@ -27,9 +27,9 @@ export function SiteFooter() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-8 md:col-span-5 md:grid-cols-3">
+          <div className="grid grid-cols-2 gap-8 md:col-span-5">
             <div>
-              <h3 className="text-xs font-semibold uppercase tracking-wider text-fg-muted">
+              <h3 className="col-heading">
                 {t("overview.title")}
               </h3>
               <ul className="mt-4 space-y-2.5 text-sm">
@@ -42,7 +42,7 @@ export function SiteFooter() {
             </div>
 
             <div>
-              <h3 className="text-xs font-semibold uppercase tracking-wider text-fg-muted">
+              <h3 className="col-heading">
                 {t("reach.title")}
               </h3>
               <ul className="mt-4 space-y-2.5 text-sm">
@@ -52,19 +52,10 @@ export function SiteFooter() {
                 <li><Link href="/contact" className="text-fg-muted transition-colors hover:text-accent">{t("reach.press")}</Link></li>
               </ul>
             </div>
-
-            <div>
-              <h3 className="text-xs font-semibold uppercase tracking-wider text-fg-muted">
-                {t("legal.title")}
-              </h3>
-              <ul className="mt-4 space-y-2.5 text-sm">
-                <li><Link href="/privacy" className="text-fg-muted transition-colors hover:text-accent">{t("legal.privacy")}</Link></li>
-              </ul>
-            </div>
           </div>
 
           <div className="md:col-span-3">
-            <h3 className="text-xs font-semibold uppercase tracking-wider text-fg-muted">
+            <h3 className="col-heading">
               {t("newsletter.title")}
             </h3>
             <p className="mt-4 text-sm leading-relaxed text-fg-muted">

@@ -45,15 +45,11 @@
       "research": "الأبحاث"
     },
     "reach": {
-      "title": "تواصل معنا",
+      "title": "التواصل",
       "general": "استفسار عام",
       "research": "تعاون بحثي",
       "partnership": "شراكة مؤسسية",
       "press": "الإعلام"
-    },
-    "legal": {
-      "title": "الخصوصية والشروط",
-      "privacy": "سياسة الخصوصية"
     },
     "newsletter": {
       "title": "ابقَ على اطّلاع",
