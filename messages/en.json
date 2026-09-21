@@ -646,7 +646,7 @@
       "heading": "This policy is a placeholder",
       "body": "Sehhatlas is a pre-launch student project and does not yet process personal data beyond what is submitted through the contact form. A complete privacy policy — covering data collected, retention, and rights — will be published before any data collection beyond the contact form goes live.",
       "contactFormHeading": "Contact form data",
-      "contactFormBody": "Information submitted through the contact form (name, organisation, email, message) is used only to respond to your enquiry and is not shared with third parties or used for any other purpose."
+      "contactFormBody": "Information submitted through the contact form (name, organisation, email, message) is used only to respond to your enquiry. Delivery is handled by FormSubmit (formsubmit.co), which forwards the message to the founder's inbox and processes it only for that purpose. It is not shared with anyone else, and it is not used for any other purpose."
     }
   },
   "notFound": {

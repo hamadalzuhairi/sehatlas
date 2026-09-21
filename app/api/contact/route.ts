@@ -115,11 +115,62 @@ export async function POST(request: Request) {
     }
   }
 
-  // Nothing is configured. Say so rather than showing a success screen for a
-  // message that was never sent — the form then points at the mailto link.
-  console.error(
-    "[contact] no delivery configured (set RESEND_API_KEY); message not sent",
-    { name, email, enquiryType },
-  );
-  return NextResponse.json({ ok: false, error: "not_configured" }, { status: 503 });
+  // Default path: FormSubmit forwards straight to the inbox and needs no key
+  // or account — only a one-time confirmation click by the owner. Delivery is
+  // server-side so the address is never in the client bundle.
+  const origin = request.headers.get("origin") ?? SITE_URL;
+
+  try {
+    const response = await fetch(
+      `https://formsubmit.co/ajax/${encodeURIComponent(
+        process.env.CONTACT_TO_EMAIL ?? CONTACT_EMAIL,
+      )}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          // FormSubmit rejects calls with no page origin ("open this page
+          // through a web server"). A server-to-server fetch sends neither
+          // header, so pass the site's own origin through.
+          Origin: origin,
+          Referer: `${origin}/`,
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          organisation,
+          enquiryType,
+          message,
+          _subject: subject,
+          _template: "table",
+          // No interstitial captcha page — this is a server-to-server call.
+          _captcha: "false",
+        }),
+      },
+    );
+
+    const result = (await response.json().catch(() => null)) as
+      | { success?: string | boolean; message?: string }
+      | null;
+
+    // FormSubmit answers 200 with success:"true"; anything else is a failure
+    // worth surfacing rather than showing a success screen over.
+    const delivered =
+      response.ok && (result?.success === true || result?.success === "true");
+
+    if (!delivered) {
+      console.error(
+        "[contact] FormSubmit did not accept the message",
+        response.status,
+        result?.message ?? "",
+      );
+      return NextResponse.json({ ok: false, error: "delivery_failed" }, { status: 502 });
+    }
+
+    return NextResponse.json({ ok: true });
+  } catch (error) {
+    console.error("[contact] could not reach FormSubmit", error);
+    return NextResponse.json({ ok: false, error: "delivery_failed" }, { status: 502 });
+  }
 }
