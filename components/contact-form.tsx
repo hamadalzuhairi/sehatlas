@@ -54,6 +54,15 @@ export function ContactForm({
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
+      {/* Honeypot: hidden from people, irresistible to bots. */}
+      <input
+        type="text"
+        name="hp_field"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden
+        className="absolute h-0 w-0 overflow-hidden opacity-0"
+      />
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <div>
           <label htmlFor="name" className="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-fg-muted">
@@ -121,7 +130,14 @@ export function ContactForm({
         />
       </div>
 
-      {status === "error" && <p className="text-sm text-quad-priority">{labels.errorBody}</p>}
+      {status === "error" && (
+        <p role="alert" className="text-sm text-quad-priority">
+          {labels.errorBody}{" "}
+          <a href={`mailto:${CONTACT_EMAIL}`} className="underline">
+            {CONTACT_EMAIL}
+          </a>
+        </p>
+      )}
 
       <button
         type="submit"
