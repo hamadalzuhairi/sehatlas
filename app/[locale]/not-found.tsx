@@ -22,7 +22,7 @@ export default function LocaleNotFound() {
       <h1 className="title-measure mt-3 text-4xl font-extrabold text-fg sm:text-5xl">{t("title")}</h1>
       <p className="mt-5 text-lg leading-relaxed text-fg-muted">{t("body")}</p>
 
-      <ul className="mt-8 grid max-w-5xl gap-2 sm:grid-cols-2 xl:grid-cols-3">
+      <ul className="mt-8 grid max-w-5xl gap-2 sm:grid-cols-2 lg:grid-cols-3">
         {ROUTES.map((route) => (
           <li key={route.href}>
             <Link

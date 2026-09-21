@@ -397,11 +397,14 @@ html[data-js] .reveal.is-visible {
 .doc-section > h2 {
   margin-bottom: 0.75rem;
 }
-@media (min-width: 1280px) {
+/* The rail starts at 1024px: a 1280x800 laptop sits just under the next
+   breakpoint up, and leaving it stacked there stranded the body text in a
+   narrow strip with a 300px void beside it. */
+@media (min-width: 1024px) {
   .doc-section {
     display: grid;
-    grid-template-columns: minmax(0, 20rem) minmax(0, 1fr);
-    gap: 1rem 4.5rem;
+    grid-template-columns: minmax(0, 15rem) minmax(0, 1fr);
+    gap: 1rem 3rem;
     align-items: start;
   }
   .doc-section > h2 {
@@ -418,6 +421,14 @@ html[data-js] .reveal.is-visible {
   .doc-section > h2 + * {
     grid-row: 1;
     margin-top: 0;
+  }
+}
+
+/* More room for the rail once there is width to spare. */
+@media (min-width: 1280px) {
+  .doc-section {
+    grid-template-columns: minmax(0, 20rem) minmax(0, 1fr);
+    gap: 1rem 4.5rem;
   }
 }
 

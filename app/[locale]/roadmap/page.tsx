@@ -72,7 +72,7 @@ export default async function RoadmapPage({
             </div>
             <p className={`${proseFill(phase.summary)} mt-2 text-fg-muted`}>{phase.summary}</p>
 
-            <div className="mt-5 grid gap-6 xl:grid-cols-2 xl:gap-12">
+            <div className="mt-5 grid gap-6 lg:grid-cols-2 lg:gap-10 xl:gap-12">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-wide text-fg-muted">
                   {t("deliverablesLabel")}
