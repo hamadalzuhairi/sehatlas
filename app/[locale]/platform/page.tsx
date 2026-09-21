@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Reveal } from "@/components/reveal";
+import { proseFill } from "@/lib/prose";
 import { StatusBadge } from "@/components/status-badge";
 
 type Component = { title: string; body: string };
@@ -93,7 +94,7 @@ export default async function PlatformPage({
       {/* Quadrant */}
       <Reveal className="doc-section mt-14">
         <h2 className="text-2xl font-bold text-fg">{t("quadrant.heading")}</h2>
-        <p className="measure text-fg-muted">{t("quadrant.body")}</p>
+        <p className={`${proseFill(t("quadrant.body"))} text-fg-muted`}>{t("quadrant.body")}</p>
         <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 2xl:grid-cols-4">
           {quadrantKeys.map((key) => (
             <div key={key} className="surface p-4">
@@ -107,12 +108,12 @@ export default async function PlatformPage({
 
       <Reveal className="doc-section mt-14">
         <h2 className="text-xl font-bold text-fg">{t("whyTwoAxes.heading")}</h2>
-        <p className="measure text-fg-muted">{t("whyTwoAxes.body")}</p>
+        <p className={`${proseFill(t("whyTwoAxes.body"))} text-fg-muted`}>{t("whyTwoAxes.body")}</p>
       </Reveal>
 
       <Reveal className="doc-section mt-14">
         <h2 className="text-xl font-bold text-fg">{t("validation.heading")}</h2>
-        <p className="measure text-fg-muted">{t("validation.body")}</p>
+        <p className={`${proseFill(t("validation.body"))} text-fg-muted`}>{t("validation.body")}</p>
         <ol className="mt-4 space-y-3">
           {validationItems.map((item, i) => (
             <li key={item.title} className="flex gap-3">

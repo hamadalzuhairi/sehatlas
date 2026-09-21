@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Reveal } from "@/components/reveal";
+import { proseFill } from "@/lib/prose";
 import { StatusBadge, type FeatureStatus } from "@/components/status-badge";
 import currentSprint from "@/content/roadmap.json";
 
@@ -69,7 +70,7 @@ export default async function RoadmapPage({
               <h2 className="text-xl font-bold text-fg">{phase.title}</h2>
               <StatusBadge status={phase.status} label={tCommon(`status.${phase.status}`)} />
             </div>
-            <p className="measure mt-2 text-fg-muted">{phase.summary}</p>
+            <p className={`${proseFill(phase.summary)} mt-2 text-fg-muted`}>{phase.summary}</p>
 
             <p className="mt-4 text-xs font-semibold uppercase tracking-wide text-fg-muted">
               Deliverables

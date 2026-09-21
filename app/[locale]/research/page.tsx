@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Reveal } from "@/components/reveal";
+import { proseFill } from "@/lib/prose";
 
 type Section = { title: string; body: string };
 
@@ -46,7 +47,7 @@ export default async function ResearchPage({
         {sections.map((s) => (
           <Reveal key={s.title} className="doc-section">
             <h2 className="text-lg font-bold text-fg">{s.title}</h2>
-            <p className="measure text-fg-muted">{s.body}</p>
+            <p className={`${proseFill(s.body)} text-fg-muted`}>{s.body}</p>
           </Reveal>
         ))}
       </div>

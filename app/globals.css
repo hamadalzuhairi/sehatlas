@@ -426,6 +426,17 @@ html[data-js] .reveal.is-visible {
   max-width: 88ch;
 }
 
+/* Short copy fills the column outright. At one or two lines a long measure
+   costs nothing, and the column is no longer left half empty. */
+.prose-fill {
+  max-width: 88ch;
+}
+@media (min-width: 1536px) {
+  .prose-fill {
+    max-width: none;
+  }
+}
+
 /* Several paragraphs in a wide column set into two columns rather than one
    long line, so the column is filled without hurting the measure. */
 @media (min-width: 1536px) {

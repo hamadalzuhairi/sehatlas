@@ -44,7 +44,7 @@ export default async function PrivacyPage({
 
       <div className="doc-section mt-12">
         <h2 className="text-lg font-bold text-fg">{t("placeholder.contactFormHeading")}</h2>
-        <p className="measure text-sm text-fg-muted">{t("placeholder.contactFormBody")}</p>
+        <p className="prose-fill text-sm text-fg-muted">{t("placeholder.contactFormBody")}</p>
       </div>
     </div>
   );

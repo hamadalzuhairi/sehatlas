@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Reveal } from "@/components/reveal";
 import { FOUNDER_INSTITUTION } from "@/lib/site-config";
+import { proseFill } from "@/lib/prose";
 
 type Member = { name: string; role: string };
 
@@ -59,7 +60,9 @@ export default async function AboutPage({
 
       <Reveal className="doc-section mt-14">
         <h2 className="text-2xl font-bold text-fg">{t("mission.heading")}</h2>
-        <p className="measure leading-relaxed text-fg-muted">{t("mission.body")}</p>
+        <p className={`${proseFill(t("mission.body"))} leading-relaxed text-fg-muted`}>
+          {t("mission.body")}
+        </p>
       </Reveal>
 
       <Reveal className="doc-section mt-14">
@@ -111,7 +114,9 @@ export default async function AboutPage({
 
       <Reveal className="doc-section mt-14 border-t border-border pt-10">
         <h2 className="text-2xl font-bold text-fg">{t("institutional.heading")}</h2>
-        <p className="measure leading-relaxed text-fg-muted">{t("institutional.body")}</p>
+        <p className={`${proseFill(t("institutional.body"))} leading-relaxed text-fg-muted`}>
+          {t("institutional.body")}
+        </p>
         <p className="mt-3 text-xs text-fg-muted">{FOUNDER_INSTITUTION}</p>
       </Reveal>
     </div>
