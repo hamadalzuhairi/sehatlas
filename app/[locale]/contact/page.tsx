@@ -34,12 +34,12 @@ export default async function ContactPage({
   const t = await getTranslations("contact");
 
   return (
-    <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 lg:px-8">
+    <div className="page-shell grid gap-10 py-16 lg:grid-cols-[minmax(0,26rem)_minmax(0,1fr)] lg:gap-20">
       <p className="text-xs font-semibold uppercase tracking-widest text-accent">{t("hero.eyebrow")}</p>
-      <h1 className="mt-2 text-3xl font-extrabold tracking-tight text-fg sm:text-4xl">{t("hero.title")}</h1>
-      <p className="mt-4 text-lg text-fg-muted">{t("hero.subtitle")}</p>
+      <h1 className="title-measure mt-2 text-3xl font-extrabold tracking-tight text-fg sm:text-4xl">{t("hero.title")}</h1>
+      <p className="measure mt-4 text-lg text-fg-muted">{t("hero.subtitle")}</p>
 
-      <div className="mt-10">
+      <div className="w-full max-w-2xl lg:mt-0">
         <ContactForm
           labels={{
             name: t("form.name"),

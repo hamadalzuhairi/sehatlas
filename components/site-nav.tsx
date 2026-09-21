@@ -45,7 +45,7 @@ export function SiteNav() {
           : "border-transparent",
       )}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3.5 sm:px-6 lg:px-8">
+      <div className="page-shell flex items-center justify-between gap-4 py-3.5">
         <Link
           href="/"
           className="group flex items-center gap-2.5 rounded-lg"

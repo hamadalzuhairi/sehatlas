@@ -361,3 +361,89 @@ html[data-js] .reveal.is-visible {
     animation: none;
   }
 }
+
+/* ---------------------------------------------------------------------- */
+/* Page shell                                                              */
+/* ---------------------------------------------------------------------- */
+/* One container for every page, so the site keeps a single rhythm. It runs
+   almost edge to edge on a large display — the gutter grows with the
+   viewport instead of the content stranding in a narrow middle strip. */
+.page-shell {
+  width: 100%;
+  margin-inline: auto;
+  max-width: 120rem;
+  padding-inline: 1rem;
+}
+@media (min-width: 640px) {
+  .page-shell {
+    padding-inline: 1.75rem;
+  }
+}
+@media (min-width: 1024px) {
+  .page-shell {
+    padding-inline: 2.75rem;
+  }
+}
+@media (min-width: 1536px) {
+  .page-shell {
+    padding-inline: 4rem;
+  }
+}
+
+/* A prose section on a document page. Below xl it stacks as before; from xl
+   the heading takes its own rail at the leading edge and the body runs
+   alongside it, so the layout spans the full width without stretching any
+   line of text past a readable measure. */
+.doc-section > h2 {
+  margin-bottom: 0.75rem;
+}
+@media (min-width: 1280px) {
+  .doc-section {
+    display: grid;
+    grid-template-columns: minmax(0, 20rem) minmax(0, 1fr);
+    gap: 1rem 4.5rem;
+    align-items: start;
+  }
+  .doc-section > h2 {
+    grid-column: 1;
+    grid-row: 1;
+    margin-bottom: 0;
+    position: sticky;
+    top: 6rem;
+  }
+  .doc-section > :not(h2) {
+    grid-column: 2;
+  }
+  /* The first body element lines up with the heading rather than below it. */
+  .doc-section > h2 + * {
+    grid-row: 1;
+    margin-top: 0;
+  }
+}
+
+/* Caps the line length of body copy inside a full-width column. */
+.measure {
+  max-width: 88ch;
+}
+
+/* Several paragraphs in a wide column set into two columns rather than one
+   long line, so the column is filled without hurting the measure. */
+@media (min-width: 1536px) {
+  .prose-columns {
+    columns: 2;
+    column-gap: 4rem;
+    max-width: none;
+  }
+  .prose-columns > * {
+    break-inside: avoid;
+  }
+  .prose-columns > *:first-child {
+    margin-top: 0;
+  }
+}
+
+/* A title is set at its own measure — ch scales with the font size, so this
+   holds whether the heading is 2rem or 3.5rem. */
+.title-measure {
+  max-width: 26ch;
+}

@@ -37,16 +37,16 @@ export default async function ResearchPage({
   const sections = t.raw("sections") as Section[];
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
+    <div className="page-shell py-16">
       <p className="text-xs font-semibold uppercase tracking-widest text-accent">{t("hero.eyebrow")}</p>
-      <h1 className="mt-2 text-3xl font-extrabold tracking-tight text-fg sm:text-4xl">{t("hero.title")}</h1>
-      <p className="mt-4 text-lg text-fg-muted">{t("hero.subtitle")}</p>
+      <h1 className="title-measure mt-2 text-3xl font-extrabold tracking-tight text-fg sm:text-4xl">{t("hero.title")}</h1>
+      <p className="measure mt-4 text-lg text-fg-muted">{t("hero.subtitle")}</p>
 
-      <div className="mt-12 space-y-10">
+      <div className="mt-12 space-y-12">
         {sections.map((s) => (
-          <Reveal key={s.title}>
+          <Reveal key={s.title} className="doc-section">
             <h2 className="text-lg font-bold text-fg">{s.title}</h2>
-            <p className="mt-2 text-fg-muted">{s.body}</p>
+            <p className="measure text-fg-muted">{s.body}</p>
           </Reveal>
         ))}
       </div>

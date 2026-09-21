@@ -37,7 +37,7 @@ export default async function MvpPage({
   return (
     <>
       <DemoBanner text={t("banner")} />
-      <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+      <section className="page-shell py-12">
         <p className="text-xs font-semibold uppercase tracking-widest text-accent">
           {t("hero.eyebrow")}
         </p>
@@ -46,7 +46,7 @@ export default async function MvpPage({
         </h1>
         <p className="mt-3 max-w-2xl text-fg-muted">{t("hero.subtitle")}</p>
       </section>
-      <section className="mx-auto max-w-7xl px-4 pb-20 sm:px-6 lg:px-8">
+      <section className="page-shell pb-20">
         <MvpApp />
       </section>
     </>

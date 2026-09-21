@@ -15,7 +15,7 @@ export function SiteFooter() {
         aria-hidden
         className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent"
       />
-      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+      <div className="page-shell py-16">
         <div className="grid gap-10 md:grid-cols-12">
           <div className="md:col-span-4">
             <Logo

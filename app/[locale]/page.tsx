@@ -34,7 +34,7 @@ export default async function HomePage({
       <section className="relative isolate overflow-hidden">
         <div aria-hidden className="grid-backdrop pointer-events-none absolute inset-0 -z-10" />
         <div aria-hidden className="accent-bloom pointer-events-none absolute inset-x-0 top-0 -z-10 h-[520px]" />
-        <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-4 py-20 sm:px-6 lg:grid-cols-[1.05fr_1fr] lg:gap-16 lg:px-8 lg:py-28">
+        <div className="page-shell grid grid-cols-1 items-center gap-12 py-20 lg:grid-cols-[1.05fr_1fr] lg:gap-20 lg:py-28">
           <div>
             <h1 className="text-4xl font-extrabold leading-[1.07] text-fg sm:text-5xl lg:text-[3.5rem]">
               {t("hero.headline")}
@@ -65,17 +65,17 @@ export default async function HomePage({
 
       {/* 2. Built on open data */}
       <section>
-        <div className="mx-auto max-w-7xl px-4 pt-4 text-center sm:px-6 lg:px-8">
+        <div className="page-shell pt-4 text-center">
           <p className="eyebrow">{t("dataStrip.eyebrow")}</p>
         </div>
         <DataSourceStrip />
-        <p className="mx-auto mt-4 max-w-7xl px-4 text-center text-xs text-fg-muted sm:px-6 lg:px-8">
+        <p className="page-shell mt-4 text-center text-xs text-fg-muted">
           {t("dataStrip.caption")}
         </p>
       </section>
 
       {/* 3. What sets this apart */}
-      <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+      <section className="page-shell py-20">
         <Reveal>
           <h2 className="text-3xl font-bold text-fg sm:text-[2rem]">{t("values.heading")}</h2>
           <p className="mt-3 max-w-2xl leading-relaxed text-fg-muted">{t("values.subheading")}</p>
@@ -107,7 +107,7 @@ export default async function HomePage({
 
       {/* 4. By the numbers */}
       <section className="border-y border-border bg-bg-sunken">
-        <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+        <div className="page-shell py-20">
           <Reveal>
             <h2 className="text-3xl font-bold text-fg sm:text-[2rem]">{t("byNumbers.heading")}</h2>
             <p className="mt-3 max-w-2xl leading-relaxed text-fg-muted">{t("byNumbers.subheading")}</p>
@@ -133,7 +133,7 @@ export default async function HomePage({
       </section>
 
       {/* 5. The platform tiers */}
-      <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+      <section className="page-shell py-20">
         <Reveal>
           <h2 className="text-3xl font-bold text-fg sm:text-[2rem]">{t("tiers.heading")}</h2>
           <p className="mt-3 max-w-2xl leading-relaxed text-fg-muted">{t("tiers.subheading")}</p>
@@ -169,7 +169,7 @@ export default async function HomePage({
 
       {/* 6. The journey */}
       <section className="border-y border-border bg-bg-sunken">
-        <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+        <div className="page-shell py-20">
           <Reveal>
             <h2 className="text-3xl font-bold text-fg sm:text-[2rem]">{t("journey.heading")}</h2>
             <p className="mt-3 max-w-2xl leading-relaxed text-fg-muted">{t("journey.subheading")}</p>
@@ -189,7 +189,7 @@ export default async function HomePage({
       </section>
 
       {/* 7. Where we are */}
-      <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+      <section className="page-shell py-20">
         <Reveal>
           <h2 className="text-3xl font-bold text-fg sm:text-[2rem]">{t("status.heading")}</h2>
           <p className="mt-3 max-w-2xl leading-relaxed text-fg-muted">{t("status.subheading")}</p>

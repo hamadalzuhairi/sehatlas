@@ -17,12 +17,12 @@ export default function LocaleNotFound() {
   const tNav = useTranslations("nav");
 
   return (
-    <div className="mx-auto max-w-2xl px-4 py-24 sm:px-6 lg:px-8">
+    <div className="page-shell py-24">
       <p className="eyebrow">{t("eyebrow")}</p>
-      <h1 className="mt-3 text-4xl font-extrabold text-fg sm:text-5xl">{t("title")}</h1>
+      <h1 className="title-measure mt-3 text-4xl font-extrabold text-fg sm:text-5xl">{t("title")}</h1>
       <p className="mt-5 text-lg leading-relaxed text-fg-muted">{t("body")}</p>
 
-      <ul className="mt-8 grid gap-2 sm:grid-cols-2">
+      <ul className="measure mt-8 grid gap-2 sm:grid-cols-2">
         {ROUTES.map((route) => (
           <li key={route.href}>
             <Link

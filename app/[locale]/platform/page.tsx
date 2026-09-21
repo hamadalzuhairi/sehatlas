@@ -48,15 +48,15 @@ export default async function PlatformPage({
   const quadrantKeys = ["priority", "served", "remote", "none"] as const;
 
   return (
-    <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
+    <div className="page-shell py-16">
       <p className="text-xs font-semibold uppercase tracking-widest text-accent">{t("hero.eyebrow")}</p>
-      <h1 className="mt-2 text-3xl font-extrabold tracking-tight text-fg sm:text-4xl">{t("hero.title")}</h1>
-      <p className="mt-4 text-lg text-fg-muted">{t("hero.subtitle")}</p>
+      <h1 className="title-measure mt-2 text-3xl font-extrabold tracking-tight text-fg sm:text-4xl">{t("hero.title")}</h1>
+      <p className="measure mt-4 text-lg text-fg-muted">{t("hero.subtitle")}</p>
 
       {/* Axes */}
-      <Reveal className="mt-14">
+      <Reveal className="doc-section mt-14">
         <h2 className="text-2xl font-bold text-fg">{t("axes.heading")}</h2>
-        <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           <div className="surface p-6">
             <h3 className="text-lg font-semibold text-accent">{t("axes.access.title")}</h3>
             <p className="mt-2 text-sm text-fg-muted">{t("axes.access.body")}</p>
@@ -91,10 +91,10 @@ export default async function PlatformPage({
       </Reveal>
 
       {/* Quadrant */}
-      <Reveal className="mt-14">
+      <Reveal className="doc-section mt-14">
         <h2 className="text-2xl font-bold text-fg">{t("quadrant.heading")}</h2>
-        <p className="mt-3 text-fg-muted">{t("quadrant.body")}</p>
-        <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
+        <p className="measure text-fg-muted">{t("quadrant.body")}</p>
+        <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 2xl:grid-cols-4">
           {quadrantKeys.map((key) => (
             <div key={key} className="surface p-4">
               <h3 className="font-semibold text-fg">{t(`quadrant.cells.${key}.title`)}</h3>
@@ -105,14 +105,14 @@ export default async function PlatformPage({
         </div>
       </Reveal>
 
-      <Reveal className="mt-14">
+      <Reveal className="doc-section mt-14">
         <h2 className="text-xl font-bold text-fg">{t("whyTwoAxes.heading")}</h2>
-        <p className="mt-3 text-fg-muted">{t("whyTwoAxes.body")}</p>
+        <p className="measure text-fg-muted">{t("whyTwoAxes.body")}</p>
       </Reveal>
 
-      <Reveal className="mt-14">
+      <Reveal className="doc-section mt-14">
         <h2 className="text-xl font-bold text-fg">{t("validation.heading")}</h2>
-        <p className="mt-3 text-fg-muted">{t("validation.body")}</p>
+        <p className="measure text-fg-muted">{t("validation.body")}</p>
         <ol className="mt-4 space-y-3">
           {validationItems.map((item, i) => (
             <li key={item.title} className="flex gap-3">
@@ -129,9 +129,9 @@ export default async function PlatformPage({
       </Reveal>
 
       {/* Tiers */}
-      <Reveal className="mt-14">
+      <Reveal className="doc-section mt-14">
         <h2 className="text-xl font-bold text-fg">{t("tiers.heading")}</h2>
-        <div className="mt-4 surface p-6">
+        <div className="surface p-6">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <h3 className="font-semibold text-fg">{t("tiers.tier1.title")}</h3>
             <StatusBadge status="in-development" label={tCommon("status.in-development")} />

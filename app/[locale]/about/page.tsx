@@ -48,23 +48,23 @@ export default async function AboutPage({
   const members = t.raw("team.members") as Member[];
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-20 sm:px-6 lg:px-8">
+    <div className="page-shell py-20">
       <p className="eyebrow">{t("hero.eyebrow")}</p>
-      <h1 className="mt-3 text-4xl font-extrabold text-fg sm:text-5xl">
+      <h1 className="title-measure mt-3 text-4xl font-extrabold text-fg sm:text-5xl">
         {t("hero.title")}
       </h1>
-      <p className="mt-5 text-lg leading-relaxed text-fg-muted">{t("hero.subtitle")}</p>
+      <p className="measure mt-5 text-lg leading-relaxed text-fg-muted">{t("hero.subtitle")}</p>
 
       <hr className="rule-fade mt-14" />
 
-      <Reveal className="mt-14">
+      <Reveal className="doc-section mt-14">
         <h2 className="text-2xl font-bold text-fg">{t("mission.heading")}</h2>
-        <p className="mt-4 leading-relaxed text-fg-muted">{t("mission.body")}</p>
+        <p className="measure leading-relaxed text-fg-muted">{t("mission.body")}</p>
       </Reveal>
 
-      <Reveal className="mt-14">
+      <Reveal className="doc-section mt-14">
         <h2 className="text-2xl font-bold text-fg">{t("problem.heading")}</h2>
-        <div className="mt-4 space-y-4 leading-relaxed text-fg-muted">
+        <div className="measure prose-columns space-y-4 leading-relaxed text-fg-muted">
           {paragraphs.map((p, i) => (
             <p key={i}>{p}</p>
           ))}
@@ -88,9 +88,9 @@ export default async function AboutPage({
         <p className="mt-5 leading-relaxed text-fg-muted">{t("founder.bio")}</p>
       </Reveal>
 
-      <Reveal className="mt-14">
+      <Reveal className="doc-section mt-14">
         <h2 className="text-2xl font-bold text-fg">{t("team.heading")}</h2>
-        <ul className="mt-6 grid gap-4 sm:grid-cols-2">
+        <ul className="grid gap-4 sm:grid-cols-2 2xl:grid-cols-4">
           {members.map((member) => (
             <li key={member.name} className="surface surface-interactive flex items-center gap-4 p-5">
               <span
@@ -109,9 +109,9 @@ export default async function AboutPage({
         <p className="mt-5 text-xs leading-relaxed text-fg-muted">{t("team.note")}</p>
       </Reveal>
 
-      <Reveal className="mt-14 border-t border-border pt-10">
+      <Reveal className="doc-section mt-14 border-t border-border pt-10">
         <h2 className="text-2xl font-bold text-fg">{t("institutional.heading")}</h2>
-        <p className="mt-4 leading-relaxed text-fg-muted">{t("institutional.body")}</p>
+        <p className="measure leading-relaxed text-fg-muted">{t("institutional.body")}</p>
         <p className="mt-3 text-xs text-fg-muted">{FOUNDER_INSTITUTION}</p>
       </Reveal>
     </div>

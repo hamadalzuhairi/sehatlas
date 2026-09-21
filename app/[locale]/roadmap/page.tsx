@@ -49,10 +49,10 @@ export default async function RoadmapPage({
     currentSprint.currentSprint[locale as "en" | "ar"] ?? currentSprint.currentSprint.en;
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
+    <div className="page-shell py-16">
       <p className="text-xs font-semibold uppercase tracking-widest text-accent">{t("hero.eyebrow")}</p>
-      <h1 className="mt-2 text-3xl font-extrabold tracking-tight text-fg sm:text-4xl">{t("hero.title")}</h1>
-      <p className="mt-4 text-lg text-fg-muted">{t("hero.subtitle")}</p>
+      <h1 className="title-measure mt-2 text-3xl font-extrabold tracking-tight text-fg sm:text-4xl">{t("hero.title")}</h1>
+      <p className="measure mt-4 text-lg text-fg-muted">{t("hero.subtitle")}</p>
 
       <Reveal className="mt-10 rounded-xl border border-accent/40 bg-accent-soft p-4">
         <p className="text-xs font-semibold uppercase tracking-wide text-accent">
@@ -69,7 +69,7 @@ export default async function RoadmapPage({
               <h2 className="text-xl font-bold text-fg">{phase.title}</h2>
               <StatusBadge status={phase.status} label={tCommon(`status.${phase.status}`)} />
             </div>
-            <p className="mt-2 text-fg-muted">{phase.summary}</p>
+            <p className="measure mt-2 text-fg-muted">{phase.summary}</p>
 
             <p className="mt-4 text-xs font-semibold uppercase tracking-wide text-fg-muted">
               Deliverables
